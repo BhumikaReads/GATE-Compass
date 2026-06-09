@@ -7,514 +7,281 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700;1,900&family=IBM+Plex+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:       #fdf6ee;
-    --surface:  #ffffff;
-    --surface2: #fef9f4;
-    --border:   #e8ddd0;
-    --text:     #1a1208;
-    --muted:    #6b5c48;
-    --dim:      #b8a898;
-
-    --mint:     #c8f5e0;
-    --mint-d:   #1a7a50;
-    --mint-b:   #3dba7e;
-
-    --lemon:    #fff3b0;
-    --lemon-d:  #7a5f00;
-    --lemon-b:  #e6b800;
-
-    --peach:    #ffd6cc;
-    --peach-d:  #8a2e1a;
-    --peach-b:  #f06040;
-
-    --sky:      #cce8ff;
-    --sky-d:    #0a3d6b;
-    --sky-b:    #2d7dd2;
-
-    --lavender: #e8d6ff;
-    --lav-d:    #4a1a8a;
-    --lav-b:    #8b5cf6;
-
-    --rose:     #ffd6e8;
-    --rose-d:   #7a1a3d;
-    --rose-b:   #e63d7a;
+    --bg:#fdf6ee;--surface:#ffffff;--surface2:#fef9f4;--border:#e8ddd0;
+    --text:#1a1208;--muted:#6b5c48;--dim:#b8a898;
+    --mint:#c8f5e0;--mint-d:#1a7a50;--mint-b:#3dba7e;
+    --lemon:#fff3b0;--lemon-d:#7a5f00;--lemon-b:#e6b800;
+    --peach:#ffd6cc;--peach-d:#8a2e1a;--peach-b:#f06040;
+    --sky:#cce8ff;--sky-d:#0a3d6b;--sky-b:#2d7dd2;
+    --lavender:#e8d6ff;--lav-d:#4a1a8a;--lav-b:#8b5cf6;
+    --rose:#ffd6e8;--rose-d:#7a1a3d;--rose-b:#e63d7a;
   }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;line-height:1.7;min-height:100vh;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#e8ddd0 1px,transparent 1px);background-size:28px 28px;opacity:.45;pointer-events:none;z-index:0}
+  .container{max-width:840px;margin:0 auto;padding:2rem 1.5rem 6rem;position:relative;z-index:1}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* POLKA DOT BG */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: radial-gradient(circle, #e8ddd0 1px, transparent 1px);
-    background-size: 28px 28px;
-    opacity: 0.45;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .container {
-    max-width: 840px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem 6rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ── HEADER ── */
-  .header {
-    text-align: center;
-    padding: 3.5rem 1rem 2.5rem;
-    margin-bottom: 2rem;
-    position: relative;
-  }
-
-  .eyebrow {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--peach-b);
-    margin-bottom: 1.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  .eyebrow::before, .eyebrow::after {
-    content: '';
-    display: block;
-    width: 32px;
-    height: 1.5px;
-    background: var(--peach-b);
-    opacity: 0.5;
-  }
-
-  h1 {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2.5rem, 7vw, 4.5rem);
-    font-weight: 900;
-    color: var(--text);
-    line-height: 1.05;
-    margin-bottom: 0.6rem;
-    letter-spacing: -0.02em;
-  }
-
-  h1 .highlight {
-    color: var(--peach-b);
-    font-style: italic;
-    position: relative;
-  }
-
-  h1 .highlight::after {
-    content: '';
-    position: absolute;
-    left: 0; right: 0;
-    bottom: 3px;
-    height: 6px;
-    background: var(--lemon);
-    z-index: -1;
-    border-radius: 2px;
-  }
-
-  .subtitle {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    margin-top: 1rem;
-    line-height: 1.9;
-  }
+  /* HEADER */
+  .header{text-align:center;padding:3.5rem 1rem 2.5rem;margin-bottom:2rem}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--peach-b);margin-bottom:1.1rem;display:flex;align-items:center;justify-content:center;gap:.5rem}
+  .eyebrow::before,.eyebrow::after{content:'';display:block;width:32px;height:1.5px;background:var(--peach-b);opacity:.5}
+  h1{font-family:'Fraunces',serif;font-size:clamp(2.5rem,7vw,4.5rem);font-weight:900;color:var(--text);line-height:1.05;margin-bottom:.6rem;letter-spacing:-.02em}
+  h1 .highlight{color:var(--peach-b);font-style:italic;position:relative}
+  h1 .highlight::after{content:'';position:absolute;left:0;right:0;bottom:3px;height:6px;background:var(--lemon);z-index:-1;border-radius:2px}
+  .subtitle{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.04em;margin-top:1rem;line-height:1.9}
 
   /* HERO QUIP */
-  .hero-quip {
-    background: var(--mint);
-    border: 1.5px solid var(--mint-b);
-    border-radius: 14px;
-    padding: 1.25rem 1.75rem;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-  .quip-icon {
-    font-size: 1.6rem;
-    line-height: 1;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .quip-text {
-    font-family: 'Fraunces', serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--mint-d);
-    font-style: italic;
-    line-height: 1.5;
-  }
-  .quip-sub {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 13px;
-    color: var(--mint-d);
-    opacity: 0.75;
-    margin-top: 0.3rem;
-    font-style: normal;
-    font-weight: 400;
-  }
+  .hero-quip{background:var(--mint);border:1.5px solid var(--mint-b);border-radius:14px;padding:1.25rem 1.75rem;margin-bottom:2rem;display:flex;align-items:flex-start;gap:1rem}
+  .quip-icon{font-size:1.6rem;line-height:1;flex-shrink:0;margin-top:2px}
+  .quip-text{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--mint-d);font-style:italic;line-height:1.5}
+  .quip-sub{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--mint-d);opacity:.75;margin-top:.3rem;font-style:normal;font-weight:400}
 
-  /* STATS ROW */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 2rem;
-  }
+  /* STATS */
+  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:2rem}
+  .stat{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:1rem .75rem;text-align:center}
+  .stat:nth-child(1){border-top:4px solid var(--sky-b)}
+  .stat:nth-child(2){border-top:4px solid var(--peach-b)}
+  .stat:nth-child(3){border-top:4px solid var(--mint-b)}
+  .stat-num{font-family:'Fraunces',serif;font-size:2rem;font-weight:900;display:block;line-height:1;margin-bottom:.3rem}
+  .stat:nth-child(1) .stat-num{color:var(--sky-b)}
+  .stat:nth-child(2) .stat-num{color:var(--peach-b)}
+  .stat:nth-child(3) .stat-num{color:var(--mint-b)}
+  .stat-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
 
-  .stat {
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
-    padding: 1rem 0.75rem;
-    text-align: center;
-  }
-  .stat:nth-child(1) { border-top: 4px solid var(--sky-b); }
-  .stat:nth-child(2) { border-top: 4px solid var(--peach-b); }
-  .stat:nth-child(3) { border-top: 4px solid var(--mint-b); }
-
-  .stat-num {
-    font-family: 'Fraunces', serif;
-    font-size: 2rem;
-    font-weight: 900;
-    display: block;
-    line-height: 1;
-    margin-bottom: 0.3rem;
-  }
-  .stat:nth-child(1) .stat-num { color: var(--sky-b); }
-  .stat:nth-child(2) .stat-num { color: var(--peach-b); }
-  .stat:nth-child(3) .stat-num { color: var(--mint-b); }
-
-  .stat-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  /* SECTION HEADERS */
-  .section-title {
-    font-family: 'Fraunces', serif;
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: var(--text);
-    margin: 2.5rem 0 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-  .section-pill {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 3px 9px;
-    border-radius: 20px;
-    font-weight: 600;
-  }
+  /* SECTION TITLE */
+  .section-title{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:900;color:var(--text);margin:2.5rem 0 1rem;display:flex;align-items:center;gap:.6rem}
+  .section-pill{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:20px;font-weight:600}
 
   /* ACCORDION */
-  .accordion {
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
-    margin-bottom: 0.6rem;
-    overflow: hidden;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    background: var(--surface);
-  }
-  .accordion:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-  .accordion.open { border-color: var(--accent-color, #3dba7e); box-shadow: 0 2px 18px rgba(0,0,0,0.08); }
+  .accordion{border:1.5px solid var(--border);border-radius:12px;margin-bottom:.6rem;overflow:hidden;transition:border-color .2s,box-shadow .2s;background:var(--surface)}
+  .accordion:hover{box-shadow:0 2px 12px rgba(0,0,0,.06)}
+  .accordion.open{border-color:var(--accent-color,#3dba7e);box-shadow:0 2px 18px rgba(0,0,0,.08)}
+  .acc-header{display:flex;align-items:center;padding:.9rem 1.1rem;cursor:pointer;user-select:none;gap:.8rem;transition:background .15s}
+  .acc-header:hover{background:var(--surface2)}
+  .acc-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+  .acc-left{display:flex;align-items:center;gap:.7rem;flex:1;min-width:0}
+  .acc-badge{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;flex-shrink:0;font-weight:600}
+  .b-high{background:var(--mint);color:var(--mint-d)}
+  .b-med{background:var(--lemon);color:var(--lemon-d)}
+  .b-low{background:var(--sky);color:var(--sky-d)}
+  .b-day{background:var(--lavender);color:var(--lav-d)}
+  .b-edge{background:var(--rose);color:var(--rose-d)}
+  .acc-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:.97rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .acc-marks{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);white-space:nowrap;flex-shrink:0;margin-left:auto}
+  .acc-arrow{font-size:11px;color:var(--dim);flex-shrink:0;transition:transform .22s;margin-left:.5rem}
+  .accordion.open .acc-arrow{transform:rotate(90deg);color:var(--text)}
+  .acc-body{display:none;padding:1rem 1.4rem 1.4rem;border-top:1px solid var(--border);background:var(--surface2);animation:fadeSlide .2s ease-out}
+  .accordion.open .acc-body{display:block}
+  @keyframes fadeSlide{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+  .acc-body h4{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:1rem 0 .4rem;font-weight:600}
+  .acc-body h4:first-child{margin-top:0}
+  .acc-body p{font-size:15px;color:var(--muted);margin-bottom:.5rem}
+  .acc-body ul{list-style:none;padding:0}
+  .acc-body ul li{font-size:15px;color:var(--muted);padding:.2rem 0 .2rem 1.2rem;position:relative}
+  .acc-body ul li::before{content:'▸';position:absolute;left:0;color:var(--dim);font-size:11px;top:.35rem}
 
-  .acc-header {
-    display: flex;
-    align-items: center;
-    padding: 0.9rem 1.1rem;
-    cursor: pointer;
-    user-select: none;
-    gap: 0.8rem;
-    transition: background 0.15s;
-  }
-  .acc-header:hover { background: var(--surface2); }
-
-  .acc-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .acc-left {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    flex: 1;
-    min-width: 0;
-  }
-
-  .acc-badge {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    padding: 3px 8px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    white-space: nowrap;
-    flex-shrink: 0;
-    font-weight: 600;
-  }
-  .b-high { background: var(--mint); color: var(--mint-d); }
-  .b-med  { background: var(--lemon); color: var(--lemon-d); }
-  .b-low  { background: var(--sky); color: var(--sky-d); }
-  .b-day  { background: var(--lavender); color: var(--lav-d); }
-  .b-edge { background: var(--rose); color: var(--rose-d); }
-
-  .acc-title {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.97rem;
-    font-weight: 600;
-    color: var(--text);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .acc-marks {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--dim);
-    white-space: nowrap;
-    flex-shrink: 0;
-    margin-left: auto;
-  }
-
-  .acc-arrow {
-    font-size: 11px;
-    color: var(--dim);
-    flex-shrink: 0;
-    transition: transform 0.22s;
-    margin-left: 0.5rem;
-  }
-  .accordion.open .acc-arrow { transform: rotate(90deg); color: var(--text); }
-
-  .acc-body {
-    display: none;
-    padding: 1rem 1.4rem 1.4rem;
-    border-top: 1px solid var(--border);
-    background: var(--surface2);
-    animation: fadeSlide 0.2s ease-out;
-  }
-  .accordion.open .acc-body { display: block; }
-
-  @keyframes fadeSlide {
-    from { opacity: 0; transform: translateY(-5px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .acc-body h4 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    margin: 1rem 0 0.4rem;
-    font-weight: 600;
-  }
-  .acc-body h4:first-child { margin-top: 0; }
-
-  .acc-body p {
-    font-size: 15px;
-    color: var(--muted);
-    margin-bottom: 0.5rem;
-  }
-
-  .acc-body ul { list-style: none; padding: 0; }
-  .acc-body ul li {
-    font-size: 15px;
-    color: var(--muted);
-    padding: 0.2rem 0 0.2rem 1.2rem;
-    position: relative;
-  }
-  .acc-body ul li::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--dim);
-    font-size: 11px;
-    top: 0.35rem;
-  }
-
-  /* FORMULA BLOCK */
-  .formula-block {
-    background: var(--lemon);
-    border: 1.5px solid var(--lemon-b);
-    border-radius: 8px;
-    padding: 0.8rem 1rem;
-    margin: 0.75rem 0;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12.5px;
-    color: var(--lemon-d);
-    line-height: 1.9;
-    overflow-x: auto;
-  }
-
-  /* TIP BLOCK */
-  .tip-block {
-    background: var(--peach);
-    border: 1.5px solid var(--peach-b);
-    border-radius: 8px;
-    padding: 0.8rem 1rem;
-    margin: 0.75rem 0;
-    font-size: 14px;
-    color: var(--peach-d);
-  }
-  .tip-block strong {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    display: block;
-    margin-bottom: 0.3rem;
-    color: var(--peach-b);
-    font-weight: 600;
-  }
-
-  /* INFO BLOCK */
-  .info-block {
-    background: var(--sky);
-    border: 1.5px solid var(--sky-b);
-    border-radius: 8px;
-    padding: 0.8rem 1rem;
-    margin: 0.75rem 0;
-    font-size: 14px;
-    color: var(--sky-d);
-  }
-  .info-block strong {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    display: block;
-    margin-bottom: 0.3rem;
-    color: var(--sky-b);
-    font-weight: 600;
-  }
+  /* BLOCKS */
+  .formula-block{background:var(--lemon);border:1.5px solid var(--lemon-b);border-radius:8px;padding:.8rem 1rem;margin:.75rem 0;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--lemon-d);line-height:1.9;overflow-x:auto}
+  .tip-block{background:var(--peach);border:1.5px solid var(--peach-b);border-radius:8px;padding:.8rem 1rem;margin:.75rem 0;font-size:14px;color:var(--peach-d)}
+  .tip-block strong{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:.3rem;color:var(--peach-b);font-weight:600}
+  .info-block{background:var(--sky);border:1.5px solid var(--sky-b);border-radius:8px;padding:.8rem 1rem;margin:.75rem 0;font-size:14px;color:var(--sky-d)}
+  .info-block strong{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:.3rem;color:var(--sky-b);font-weight:600}
 
   /* MARKING GRID */
-  .marking-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin: 0.75rem 0;
-  }
-  .mark-card {
-    border-radius: 8px;
-    padding: 0.75rem;
-    text-align: center;
-    border: 1.5px solid transparent;
-  }
-  .mark-card .mk-val {
-    font-family: 'Fraunces', serif;
-    font-size: 1.3rem;
-    font-weight: 900;
-    display: block;
-    margin-bottom: 0.2rem;
-    line-height: 1;
-  }
-  .mark-card .mk-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.05em;
-  }
-  .mc-red   { background: var(--peach); border-color: var(--peach-b); }
-  .mc-red .mk-val { color: var(--peach-b); }
-  .mc-red .mk-label { color: var(--peach-d); }
-  .mc-green { background: var(--mint); border-color: var(--mint-b); }
-  .mc-green .mk-val { color: var(--mint-b); }
-  .mc-green .mk-label { color: var(--mint-d); }
+  .marking-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:.75rem 0}
+  .mark-card{border-radius:8px;padding:.75rem;text-align:center;border:1.5px solid transparent}
+  .mark-card .mk-val{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:900;display:block;margin-bottom:.2rem;line-height:1}
+  .mark-card .mk-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em}
+  .mc-red{background:var(--peach);border-color:var(--peach-b)}
+  .mc-red .mk-val{color:var(--peach-b)}
+  .mc-red .mk-label{color:var(--peach-d)}
+  .mc-green{background:var(--mint);border-color:var(--mint-b)}
+  .mc-green .mk-val{color:var(--mint-b)}
+  .mc-green .mk-label{color:var(--mint-d)}
 
   /* PROGRESS BARS */
-  .pb-row { display: flex; align-items: center; gap: 0.6rem; margin: 0.35rem 0; }
-  .pb-label { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); min-width:80px; }
-  .pb-outer { flex:1; height:8px; background:var(--border); border-radius:4px; overflow:hidden; }
-  .pb-inner { height:100%; border-radius:4px; }
-  .pb-pct { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--dim); min-width:36px; text-align:right; }
+  .pb-row{display:flex;align-items:center;gap:.6rem;margin:.35rem 0}
+  .pb-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);min-width:80px}
+  .pb-outer{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+  .pb-inner{height:100%;border-radius:4px}
+  .pb-pct{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);min-width:36px;text-align:right}
 
   /* TIMELINE */
-  .timeline { padding-left: 1.5rem; margin: 0.5rem 0; position: relative; }
-  .timeline::before { content:''; position:absolute; left:5px; top:0; bottom:0; width:1.5px; background:var(--border); border-radius:2px; }
-  .tl-item { position:relative; margin-bottom:1rem; }
-  .tl-item::before { content:''; position:absolute; left:-1.17rem; top:6px; width:8px; height:8px; border-radius:50%; background:var(--lav-b); border:2px solid var(--bg); }
-  .tl-time { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--lav-b); display:block; margin-bottom:0.15rem; font-weight:600; }
-  .tl-text { font-size:14px; color:var(--muted); }
+  .timeline{padding-left:1.5rem;margin:.5rem 0;position:relative}
+  .timeline::before{content:'';position:absolute;left:5px;top:0;bottom:0;width:1.5px;background:var(--border);border-radius:2px}
+  .tl-item{position:relative;margin-bottom:1rem}
+  .tl-item::before{content:'';position:absolute;left:-1.17rem;top:6px;width:8px;height:8px;border-radius:50%;background:var(--lav-b);border:2px solid var(--bg)}
+  .tl-time{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--lav-b);display:block;margin-bottom:.15rem;font-weight:600}
+  .tl-text{font-size:14px;color:var(--muted)}
 
-  /* DIVIDER */
-  hr.divider { border:none; border-top:1.5px dashed var(--border); margin: 2rem 0; }
+  hr.divider{border:none;border-top:1.5px dashed var(--border);margin:2rem 0}
 
   /* FINAL BOX */
-  .final-box {
-    background: var(--lavender);
-    border: 2px solid var(--lav-b);
-    border-radius: 16px;
-    padding: 2.5rem 2rem;
-    margin-top: 3rem;
-    text-align: center;
+  .final-box{background:var(--lavender);border:2px solid var(--lav-b);border-radius:16px;padding:2.5rem 2rem;margin-top:3rem;text-align:center}
+  .final-box .big-q{font-family:'Fraunces',serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:900;color:var(--lav-d);margin-bottom:.9rem;font-style:italic;line-height:1.3}
+  .final-box p{font-size:15px;color:var(--lav-d);max-width:520px;margin:0 auto;opacity:.85}
+  .final-box .mono-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--lav-b);margin-top:1.2rem;opacity:.7}
+
+  /* DSA DEEP DIVE BUTTON */
+  .dsa-dive-btn{display:flex;align-items:center;justify-content:center;gap:.6rem;margin:.75rem 0 .25rem;padding:.8rem 1.4rem;background:linear-gradient(135deg,var(--lav-b),var(--sky-b));color:#fff;border:none;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;width:100%;transition:opacity .15s,transform .15s;text-decoration:none}
+  .dsa-dive-btn:hover{opacity:.9;transform:translateY(-1px)}
+  .dsa-dive-btn .btn-icon{font-size:1.1rem}
+  .dsa-dive-btn .btn-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;opacity:.8;letter-spacing:.05em;display:block;margin-top:1px}
+
+  /* ═══ DSA MODAL OVERLAY ═══ */
+  #dsa-overlay{
+    position:fixed;inset:0;background:rgba(26,18,8,.6);z-index:1000;
+    display:none;align-items:flex-start;justify-content:center;
+    padding:1rem;overflow-y:auto;
+    backdrop-filter:blur(4px);
   }
-  .final-box .big-q {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(1.3rem, 4vw, 2rem);
-    font-weight: 900;
-    color: var(--lav-d);
-    margin-bottom: 0.9rem;
-    font-style: italic;
-    line-height: 1.3;
-  }
-  .final-box p {
-    font-size: 15px;
-    color: var(--lav-d);
-    max-width: 520px;
-    margin: 0 auto;
-    opacity: 0.85;
-  }
-  .final-box .mono-tag {
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    color:var(--lav-b);
-    margin-top:1.2rem;
-    opacity:0.7;
+  #dsa-overlay.open{display:flex}
+
+  #dsa-panel{
+    background:#ffffff;border-radius:18px;width:100%;max-width:860px;
+    margin:auto;overflow:hidden;
+    box-shadow:0 24px 80px rgba(0,0,0,.25);
+    position:relative;
   }
 
-  @media (max-width:600px) {
-    .stats-row { grid-template-columns: 1fr 1fr 1fr; }
-    .stat-num { font-size:1.5rem; }
-    .marking-grid { grid-template-columns:1fr; gap:6px; }
-    .acc-marks { display:none; }
-    .final-box { padding:1.5rem 1.1rem; }
-    h1 { font-size: 2.2rem; }
+  .dsa-panel-header{
+    background:linear-gradient(135deg,#8b5cf6 0%,#2d7dd2 100%);
+    padding:1.5rem 1.75rem 1.25rem;
+    display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
+  }
+  .dsa-panel-header h2{
+    font-family:'Fraunces',serif;font-size:1.6rem;font-weight:900;color:#fff;line-height:1.2
+  }
+  .dsa-panel-header .dsa-panel-sub{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(255,255,255,.75);
+    margin-top:.3rem;letter-spacing:.04em
+  }
+  .dsa-close{
+    background:rgba(255,255,255,.2);border:none;border-radius:8px;
+    color:#fff;font-size:1.2rem;cursor:pointer;padding:.4rem .7rem;
+    transition:background .15s;flex-shrink:0;line-height:1;
+  }
+  .dsa-close:hover{background:rgba(255,255,255,.35)}
+  .dsa-panel-body{padding:1.5rem 1.75rem 2rem}
+
+  /* DSA INNER STYLES — adapted to light pastel theme */
+  .dsa-panel-body .nav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 20px}
+  .dsa-panel-body .nb{
+    padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);
+    background:var(--surface2);color:var(--muted);font-size:13px;
+    cursor:pointer;transition:all .15s;font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;
+  }
+  .dsa-panel-body .nb:hover,.dsa-panel-body .nb.act{
+    background:var(--lav-b);border-color:var(--lav-b);color:#fff
+  }
+  .dsa-panel-body .section{display:none}
+  .dsa-panel-body .section.show{display:block}
+  .dsa-panel-body .card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:12px;padding:1rem 1.25rem;margin-bottom:12px;
+  }
+  .dsa-panel-body .card h3{
+    font-family:'Fraunces',serif;font-size:1rem;font-weight:700;
+    color:var(--text);margin-bottom:8px
+  }
+  .dsa-panel-body .card p,.dsa-panel-body .card li{font-size:14px;color:var(--muted);line-height:1.6}
+  .dsa-panel-body .card ul{padding-left:18px}
+  .dsa-panel-body .badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:500;font-family:'IBM Plex Mono',monospace}
+  .dsa-panel-body .b-green{background:#c8f5e0;color:#1a7a50}
+  .dsa-panel-body .b-red{background:var(--peach);color:var(--peach-d)}
+  .dsa-panel-body .b-amber{background:var(--lemon);color:var(--lemon-d)}
+  .dsa-panel-body .b-purple{background:var(--lavender);color:var(--lav-d)}
+  .dsa-panel-body .b-blue{background:var(--sky);color:var(--sky-d)}
+  .dsa-panel-body .b-teal{background:#c8f5e0;color:#0f6e56}
+  .dsa-panel-body .trap{
+    border-left:3px solid var(--peach-b);background:var(--peach);
+    border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0;
+    font-size:13px;color:var(--peach-d)
+  }
+  .dsa-panel-body .trap strong{color:var(--peach-b)}
+  .dsa-panel-body .tip{
+    border-left:3px solid var(--mint-b);background:var(--mint);
+    border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0;
+    font-size:13px;color:var(--mint-d)
+  }
+  .dsa-panel-body .tip strong{color:var(--mint-b)}
+  .dsa-panel-body .gate{
+    border-left:3px solid var(--lav-b);background:var(--lavender);
+    border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0;
+    font-size:13px;color:var(--lav-d)
+  }
+  .dsa-panel-body .gate strong{color:var(--lav-b)}
+  .dsa-panel-body table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+  .dsa-panel-body th{background:var(--lav-b);color:#fff;padding:7px 10px;text-align:left;font-weight:600;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em}
+  .dsa-panel-body td{padding:7px 10px;border-bottom:1px solid var(--border);color:var(--muted);font-size:13px}
+  .dsa-panel-body tr:nth-child(even) td{background:var(--surface2)}
+  .dsa-panel-body .mono{
+    font-family:'IBM Plex Mono',monospace;background:var(--lemon);
+    border:1px solid var(--lemon-b);padding:10px 14px;border-radius:8px;
+    font-size:12px;color:var(--lemon-d);line-height:1.8;margin:8px 0;
+    overflow-x:auto;white-space:pre
+  }
+  .dsa-panel-body .step-row{display:flex;gap:10px;margin:10px 0;flex-wrap:wrap}
+  .dsa-panel-body .step-box{
+    flex:1;min-width:110px;background:var(--surface2);
+    border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:13px;
+  }
+  .dsa-panel-body .step-box .sn{font-weight:600;color:var(--lav-b);font-size:12px;margin-bottom:4px;font-family:'IBM Plex Mono',monospace}
+  .dsa-panel-body .step-box .sv{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)}
+  .dsa-panel-body .bars{display:flex;align-items:flex-end;gap:5px;height:120px;margin:14px 0;padding:0 4px}
+  .dsa-panel-body .bar{flex:1;border-radius:4px 4px 0 0;transition:height .4s,background .3s;cursor:pointer;position:relative;display:flex;align-items:flex-end;justify-content:center;padding-bottom:3px}
+  .dsa-panel-body .bar span{font-size:11px;font-weight:500;position:absolute;top:-18px;color:var(--muted)}
+  .dsa-panel-body .btn{
+    padding:6px 16px;border-radius:8px;border:1.5px solid var(--border);
+    background:var(--surface);color:var(--text);font-size:13px;
+    cursor:pointer;transition:all .15s;font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;
+  }
+  .dsa-panel-body .btn:hover{background:var(--surface2)}
+  .dsa-panel-body .btn.primary{background:var(--lav-b);color:#fff;border-color:var(--lav-b)}
+  .dsa-panel-body .btn.primary:hover{background:var(--lav-d)}
+  .dsa-panel-body .controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+  .dsa-panel-body .mcq-q{font-size:14px;font-weight:600;color:var(--text);margin:12px 0 8px;font-family:'Plus Jakarta Sans',sans-serif}
+  .dsa-panel-body .mcq-opt{
+    display:block;padding:8px 12px;margin:5px 0;border-radius:8px;
+    border:1.5px solid var(--border);font-size:13px;cursor:pointer;
+    transition:all .15s;color:var(--muted);background:var(--surface);
+    text-align:left;width:100%;font-family:'Plus Jakarta Sans',sans-serif;
+  }
+  .dsa-panel-body .mcq-opt:hover{background:var(--surface2)}
+  .dsa-panel-body .mcq-opt.correct{background:var(--mint);border-color:var(--mint-b);color:var(--mint-d)}
+  .dsa-panel-body .mcq-opt.wrong{background:var(--peach);border-color:var(--peach-b);color:var(--peach-d)}
+  .dsa-panel-body .mcq-exp{background:var(--sky);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--sky-d);margin-top:8px;display:none;border:1px solid var(--sky-b)}
+  .dsa-panel-body .mcq-exp.show{display:block}
+  .dsa-panel-body .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .dsa-panel-body .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .dsa-panel-body .metric{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;text-align:center}
+  .dsa-panel-body .metric .ml{font-size:12px;color:var(--muted);margin-bottom:4px;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+  .dsa-panel-body .metric .mv{font-size:18px;font-weight:700;color:var(--lav-b);font-family:'Fraunces',serif}
+  .dsa-panel-body input[type="number"]{
+    width:60px;padding:4px 8px;border:1.5px solid var(--border);
+    border-radius:6px;font-family:'IBM Plex Mono',monospace;font-size:13px;
+    background:var(--surface2);color:var(--text);
+  }
+  @media(max-width:600px){
+    .dsa-panel-body .grid2,.dsa-panel-body .grid3{grid-template-columns:1fr}
+    #dsa-panel{border-radius:12px}
+    .dsa-panel-header{padding:1.2rem 1.2rem 1rem}
+    .dsa-panel-body{padding:1rem 1rem 1.5rem}
+  }
+
+  @media(max-width:600px){
+    .stats-row{grid-template-columns:1fr 1fr 1fr}
+    .stat-num{font-size:1.5rem}
+    .marking-grid{grid-template-columns:1fr;gap:6px}
+    .acc-marks{display:none}
+    .final-box{padding:1.5rem 1.1rem}
+    h1{font-size:2.2rem}
   }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- HEADER -->
   <div class="header">
     <div class="eyebrow">GATE CS &amp; Allied Branches · 2-Day Emergency Protocol</div>
     <h1>Stop Panicking.<br>Start <span class="highlight">Scoring.</span></h1>
@@ -524,7 +291,6 @@
     </p>
   </div>
 
-  <!-- HERO QUIP -->
   <div class="hero-quip">
     <span class="quip-icon">⚡</span>
     <div>
@@ -533,130 +299,69 @@
     </div>
   </div>
 
-  <!-- STATS -->
   <div class="stats-row">
-    <div class="stat">
-      <span class="stat-num">100</span>
-      <span class="stat-label">Total Marks</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">48h</span>
-      <span class="stat-label">Time Left</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">70+</span>
-      <span class="stat-label">Coverable Marks</span>
-    </div>
+    <div class="stat"><span class="stat-num">100</span><span class="stat-label">Total Marks</span></div>
+    <div class="stat"><span class="stat-num">48h</span><span class="stat-label">Time Left</span></div>
+    <div class="stat"><span class="stat-num">70+</span><span class="stat-label">Coverable Marks</span></div>
   </div>
 
-  <!-- ══ PAPER STRUCTURE ══ -->
-  <div class="section-title">
-    Paper Architecture
-    <span class="section-pill" style="background:var(--peach);color:var(--peach-d);">Read First</span>
-  </div>
+  <div class="section-title">Paper Architecture <span class="section-pill" style="background:var(--peach);color:var(--peach-d);">Read First</span></div>
 
   <div class="accordion" style="--accent-color:var(--peach-b);" id="acc-paper">
     <div class="acc-header" onclick="toggle('acc-paper')">
       <span class="acc-dot" style="background:var(--peach-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-high">Must Know</span>
-        <span class="acc-title">How the 100 marks are split — and the negative marking trap</span>
-      </div>
-      <span class="acc-marks">100 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-high">Must Know</span><span class="acc-title">How the 100 marks are split — and the negative marking trap</span></div>
+      <span class="acc-marks">100 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
       <h4>Distribution</h4>
-      <div class="pb-row">
-        <span class="pb-label">Core CS</span>
-        <div class="pb-outer"><div class="pb-inner" style="width:70%;background:var(--sky-b);"></div></div>
-        <span class="pb-pct">70 pts</span>
-      </div>
-      <div class="pb-row">
-        <span class="pb-label">Gen Aptitude</span>
-        <div class="pb-outer"><div class="pb-inner" style="width:15%;background:var(--peach-b);"></div></div>
-        <span class="pb-pct">15 pts</span>
-      </div>
-      <div class="pb-row">
-        <span class="pb-label">Eng Maths</span>
-        <div class="pb-outer"><div class="pb-inner" style="width:15%;background:var(--mint-b);"></div></div>
-        <span class="pb-pct">15 pts</span>
-      </div>
-
+      <div class="pb-row"><span class="pb-label">Core CS</span><div class="pb-outer"><div class="pb-inner" style="width:70%;background:var(--sky-b);"></div></div><span class="pb-pct">70 pts</span></div>
+      <div class="pb-row"><span class="pb-label">Gen Aptitude</span><div class="pb-outer"><div class="pb-inner" style="width:15%;background:var(--peach-b);"></div></div><span class="pb-pct">15 pts</span></div>
+      <div class="pb-row"><span class="pb-label">Eng Maths</span><div class="pb-outer"><div class="pb-inner" style="width:15%;background:var(--mint-b);"></div></div><span class="pb-pct">15 pts</span></div>
       <h4>The Negative Marking Math — Know This Cold</h4>
       <div class="marking-grid">
-        <div class="mark-card mc-red">
-          <span class="mk-val">−⅓</span>
-          <span class="mk-label">MCQ 1-mark wrong</span>
-        </div>
-        <div class="mark-card mc-red">
-          <span class="mk-val">−⅔</span>
-          <span class="mk-label">MCQ 2-mark wrong</span>
-        </div>
-        <div class="mark-card mc-green">
-          <span class="mk-val">ZERO</span>
-          <span class="mk-label">NAT wrong — attempt everything!</span>
-        </div>
+        <div class="mark-card mc-red"><span class="mk-val">−⅓</span><span class="mk-label">MCQ 1-mark wrong</span></div>
+        <div class="mark-card mc-red"><span class="mk-val">−⅔</span><span class="mk-label">MCQ 2-mark wrong</span></div>
+        <div class="mark-card mc-green"><span class="mk-val">ZERO</span><span class="mk-label">NAT wrong — attempt everything!</span></div>
       </div>
-      <div class="tip-block">
-        <strong>The NAT Secret</strong>
-        NAT (Numerical Answer Type) questions have zero negative marking. No bubbles to guess wrong. On every single NAT question — attempt it. The expected value of attempting is always positive, even if you're unsure.
-      </div>
-      <div class="info-block">
-        <strong>MCQ Strategy</strong>
-        Skip if you can't eliminate at least 2 options. A −⅔ on a 2-marker hurts more than leaving it blank. Don't let panic push you into guessing.
-      </div>
+      <div class="tip-block"><strong>The NAT Secret</strong>NAT questions have zero negative marking. On every NAT question — attempt it. The expected value of attempting is always positive, even if unsure.</div>
+      <div class="info-block"><strong>MCQ Strategy</strong>Skip if you can't eliminate at least 2 options. A −⅔ on a 2-marker hurts more than leaving it blank. Don't let panic push you into guessing.</div>
     </div>
   </div>
 
-  <!-- ══ HIGH PRIORITY ══ -->
-  <div class="section-title">
-    High Priority — Do These First
-    <span class="section-pill" style="background:var(--mint);color:var(--mint-d);">~70 marks</span>
-  </div>
+  <div class="section-title">High Priority — Do These First <span class="section-pill" style="background:var(--mint);color:var(--mint-d);">~70 marks</span></div>
 
   <div class="accordion" style="--accent-color:var(--mint-b);" id="acc-maths">
     <div class="acc-header" onclick="toggle('acc-maths')">
       <span class="acc-dot" style="background:var(--mint-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-high">High Priority</span>
-        <span class="acc-title">Engineering Mathematics</span>
-      </div>
-      <span class="acc-marks">~15 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-high">High Priority</span><span class="acc-title">Engineering Mathematics</span></div>
+      <span class="acc-marks">~15 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
       <h4>What to Revise</h4>
       <ul>
         <li>Linear Algebra — rank, nullity, eigenvalues, Cayley-Hamilton theorem</li>
         <li>Calculus — limits, continuity, maxima/minima, definite integrals</li>
-        <li>Probability — Bayes' theorem, conditional probability, distributions (Binomial, Poisson, Normal)</li>
+        <li>Probability — Bayes' theorem, conditional probability, Binomial, Poisson, Normal distributions</li>
         <li>Statistics — mean, variance, standard deviation</li>
       </ul>
       <h4>Formulas That Appear Every Year</h4>
-      <div class="formula-block">
-P(A|B) = P(A∩B) / P(B)           ← Bayes, every single year
+      <div class="formula-block">P(A|B) = P(A∩B) / P(B)           ← Bayes, every single year
 E[X] Binomial = np,  Var = np(1−p)
 E[X] Poisson  = λ,   Var = λ
 det(AB) = det(A)·det(B)
 If Av = λv  →  A⁻¹v = (1/λ)v
 Rank-Nullity: rank(A) + nullity(A) = n</div>
-      <div class="tip-block">
-        <strong>Strategy</strong>
-        Don't re-derive. Memorise the output forms. GATE maths questions are pattern-recognition, not original derivation. 20 previous year questions beats 3 hours of theory.
-      </div>
+      <div class="tip-block"><strong>Strategy</strong>Don't re-derive. Memorise the output forms. 20 previous year questions beats 3 hours of theory.</div>
     </div>
   </div>
 
+  <!-- DSA ACCORDION WITH DEEP DIVE -->
   <div class="accordion" style="--accent-color:var(--mint-b);" id="acc-dsa">
     <div class="acc-header" onclick="toggle('acc-dsa')">
       <span class="acc-dot" style="background:var(--mint-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-high">High Priority</span>
-        <span class="acc-title">Data Structures & Algorithms</span>
-      </div>
-      <span class="acc-marks">~10–12 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-high">High Priority</span><span class="acc-title">Data Structures &amp; Algorithms</span></div>
+      <span class="acc-marks">~10–12 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
       <h4>Highest-Yield Topics</h4>
@@ -669,34 +374,31 @@ Rank-Nullity: rank(A) + nullity(A) = n</div>
         <li>Recurrences — Master theorem (commit to memory)</li>
       </ul>
       <h4>Master Theorem — Quick Reference</h4>
-      <div class="formula-block">
-T(n) = aT(n/b) + f(n)
-
+      <div class="formula-block">T(n) = aT(n/b) + f(n)
 Case 1: f(n) = O(n^(log_b(a)−ε))  →  T(n) = Θ(n^log_b(a))
 Case 2: f(n) = Θ(n^log_b(a))      →  T(n) = Θ(n^log_b(a) · log n)
 Case 3: f(n) = Ω(n^(log_b(a)+ε))  →  T(n) = Θ(f(n))
 
 Common: T(n)=2T(n/2)+n  →  Θ(n log n)  [Merge Sort]
         T(n)=T(n/2)+1   →  Θ(log n)    [Binary Search]</div>
-      <h4>GATE Question Patterns (Predict the Question)</h4>
-      <ul>
-        <li>"Trace algorithm on input X" — go step by step, don't assume</li>
-        <li>"Worst-case complexity of Y" — know amortized analysis too (dynamic arrays)</li>
-        <li>Tree height / number of nodes — formulaic, fast 2 marks</li>
-        <li>Which sorting algorithm is stable? — a favourite trick question</li>
-      </ul>
+      <div class="tip-block"><strong>GATE Question Patterns</strong>"Trace algorithm on input X" — go step by step. "Worst-case of Y" — know amortized too. "Which sort is stable?" — a perennial favourite trap.</div>
+
+      <!-- DEEP DIVE BUTTON -->
+      <button class="dsa-dive-btn" onclick="openDSA()">
+        <span class="btn-icon">🔬</span>
+        <span>
+          Dive Deeper — Interactive DSA Master Notes
+          <span class="btn-sub">Sorting · Trees · AVL · Graphs · Hashing · Heaps · Master Theorem · 10 GATE MCQs</span>
+        </span>
+      </button>
     </div>
   </div>
 
   <div class="accordion" style="--accent-color:var(--mint-b);" id="acc-os">
     <div class="acc-header" onclick="toggle('acc-os')">
       <span class="acc-dot" style="background:var(--mint-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-high">High Priority</span>
-        <span class="acc-title">Operating Systems</span>
-      </div>
-      <span class="acc-marks">~8–10 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-high">High Priority</span><span class="acc-title">Operating Systems</span></div>
+      <span class="acc-marks">~8–10 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
       <h4>Focus Areas</h4>
@@ -707,96 +409,72 @@ Common: T(n)=2T(n/2)+n  →  Θ(n log n)  [Merge Sort]
         <li>Synchronisation — semaphores, monitors, Peterson's solution, producer-consumer</li>
         <li>File systems — inode structure, FAT, disk scheduling (SSTF, SCAN, C-SCAN)</li>
       </ul>
-      <h4>Banker's Algorithm — The Formula You Need</h4>
-      <div class="formula-block">
-Need[i][j] = Max[i][j] − Allocation[i][j]
+      <h4>Banker's Algorithm</h4>
+      <div class="formula-block">Need[i][j] = Max[i][j] − Allocation[i][j]
 Safe state ↔ a safe sequence exists
 Algorithm: find a process whose Need ≤ Available
            release its resources, repeat
 If all processes finish → safe state</div>
-      <div class="tip-block">
-        <strong>Deadlock Coffman Conditions — Four of Four</strong>
-        Mutual Exclusion · Hold &amp; Wait · No Preemption · Circular Wait. All four must hold simultaneously for deadlock. GATE asks "which condition is violated by resource X" — know each one's definition.
-      </div>
+      <div class="tip-block"><strong>Deadlock Coffman Conditions — Four of Four</strong>Mutual Exclusion · Hold &amp; Wait · No Preemption · Circular Wait. All four must hold simultaneously for deadlock.</div>
     </div>
   </div>
 
   <div class="accordion" style="--accent-color:var(--mint-b);" id="acc-dbms">
     <div class="acc-header" onclick="toggle('acc-dbms')">
       <span class="acc-dot" style="background:var(--mint-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-high">High Priority</span>
-        <span class="acc-title">DBMS</span>
-      </div>
-      <span class="acc-marks">~8–10 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-high">High Priority</span><span class="acc-title">DBMS</span></div>
+      <span class="acc-marks">~8–10 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
       <h4>Must-Cover Topics</h4>
       <ul>
         <li>Normalisation — 1NF, 2NF, 3NF, BCNF. Given FDs, identify what form the relation is in.</li>
         <li>Functional Dependencies — closure, minimal cover, Armstrong's axioms</li>
-        <li>SQL — joins (inner/outer/natural), GROUP BY, HAVING, nested queries, aggregates</li>
+        <li>SQL — joins, GROUP BY, HAVING, nested queries, aggregates</li>
         <li>Transactions — ACID, conflict serializability, view serializability, 2PL</li>
         <li>Indexing — B+ tree height and search, hash indexing</li>
       </ul>
       <h4>FD Closure Algorithm</h4>
-      <div class="formula-block">
-To find (A)⁺:
+      <div class="formula-block">To find (A)⁺:
   1. Start: result = {A}
   2. For each FD X→Y: if X ⊆ result, add Y to result
   3. Repeat until no change
 → If (A)⁺ = all attributes → A is a superkey</div>
-      <div class="tip-block">
-        <strong>Conflict Serializability Shortcut</strong>
-        Draw the precedence graph. If there's a cycle → not conflict serializable. No cycle → conflict serializable. 2PL always produces conflict-serializable schedules (converse not always true).
-      </div>
+      <div class="tip-block"><strong>Conflict Serializability Shortcut</strong>Draw the precedence graph. Cycle = not conflict serializable. No cycle = serializable. 2PL always produces conflict-serializable schedules.</div>
     </div>
   </div>
 
   <div class="accordion" style="--accent-color:var(--mint-b);" id="acc-cn">
     <div class="acc-header" onclick="toggle('acc-cn')">
       <span class="acc-dot" style="background:var(--mint-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-high">High Priority</span>
-        <span class="acc-title">Computer Networks</span>
-      </div>
-      <span class="acc-marks">~7–9 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-high">High Priority</span><span class="acc-title">Computer Networks</span></div>
+      <span class="acc-marks">~7–9 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
       <h4>Hot Topics</h4>
       <ul>
         <li>IP addressing — subnetting, CIDR, number of usable hosts</li>
         <li>TCP — 3-way handshake, flow control, congestion control (slow start, AIMD)</li>
-        <li>Routing — Dijkstra's (link state), Bellman-Ford (distance vector), count-to-infinity</li>
+        <li>Routing — Dijkstra's (link state), Bellman-Ford (distance vector), count-to-infinity problem</li>
         <li>MAC protocols — CSMA/CD, ALOHA efficiencies</li>
         <li>Application layer — DNS resolution, HTTP methods, SMTP vs IMAP</li>
       </ul>
-      <h4>Formulas That Come Every Year</h4>
-      <div class="formula-block">
-Pure ALOHA efficiency    = G·e^(−2G),   max ≈ 18.4% at G=0.5
+      <div class="formula-block">Pure ALOHA efficiency    = G·e^(−2G),   max ≈ 18.4% at G=0.5
 Slotted ALOHA efficiency = G·e^(−G),    max ≈ 36.8% at G=1.0
 Subnetting: usable hosts = 2^(32−prefix) − 2
-Bandwidth-delay product  = Bandwidth × RTT
-Propagation delay        = Distance / Speed</div>
+Bandwidth-delay product  = Bandwidth × RTT</div>
     </div>
   </div>
 
   <div class="accordion" style="--accent-color:var(--mint-b);" id="acc-toc">
     <div class="acc-header" onclick="toggle('acc-toc')">
       <span class="acc-dot" style="background:var(--mint-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-high">High Priority</span>
-        <span class="acc-title">Theory of Computation</span>
-      </div>
-      <span class="acc-marks">~7–8 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-high">High Priority</span><span class="acc-title">Theory of Computation</span></div>
+      <span class="acc-marks">~7–8 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
-      <h4>The Chomsky Hierarchy — Memorise This Table</h4>
-      <div class="formula-block">
-Type 0: Recursively Enumerable  → Turing Machine
+      <h4>Chomsky Hierarchy — Memorise This</h4>
+      <div class="formula-block">Type 0: Recursively Enumerable  → Turing Machine
 Type 1: Context-Sensitive       → Linear Bounded Automaton
 Type 2: Context-Free            → Pushdown Automaton
 Type 3: Regular                 → DFA / NFA / ε-NFA</div>
@@ -806,106 +484,69 @@ Type 3: Regular                 → DFA / NFA / ε-NFA</div>
         <li>CFL — closed under union, concat, star. NOT closed under complement or intersection</li>
         <li>CFL ∩ Regular = CFL (intersection with a regular language IS closed)</li>
         <li>CSL — closed under all boolean operations</li>
-        <li>RE (Type 0) — closed under union, concat, star, intersection. NOT complement.</li>
       </ul>
-      <h4>GATE Favourite Question Types</h4>
-      <ul>
-        <li>DFA minimisation via table-filling (equivalence classes method)</li>
-        <li>"Is this language regular?" — use Pumping Lemma to disprove regularity</li>
-        <li>Decidability — Halting problem is undecidable. Know Rice's Theorem.</li>
-        <li>NFA to DFA conversion — subset construction</li>
-      </ul>
-      <div class="info-block">
-        <strong>Rice's Theorem (Free Marks Every Year)</strong>
-        Every non-trivial semantic property of Turing machines is undecidable. "Does this program halt on X?" = undecidable. "Does this program accept any string?" = undecidable. Know how to identify semantic vs syntactic properties.
-      </div>
+      <div class="info-block"><strong>Rice's Theorem (Free Marks Every Year)</strong>Every non-trivial semantic property of TMs is undecidable. "Does this program halt on X?" = undecidable. Know how to identify semantic vs syntactic properties.</div>
     </div>
   </div>
 
   <div class="accordion" style="--accent-color:var(--mint-b);" id="acc-dm">
     <div class="acc-header" onclick="toggle('acc-dm')">
       <span class="acc-dot" style="background:var(--mint-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-high">High Priority</span>
-        <span class="acc-title">Discrete Mathematics</span>
-      </div>
-      <span class="acc-marks">~6–8 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-high">High Priority</span><span class="acc-title">Discrete Mathematics</span></div>
+      <span class="acc-marks">~6–8 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
       <h4>Core Areas</h4>
       <ul>
         <li>Set Theory — power set size (2ⁿ), relations (reflexive, symmetric, transitive, equivalence)</li>
-        <li>Graph Theory — planarity (Euler's formula), chromatic number, Hamiltonian vs Eulerian conditions</li>
+        <li>Graph Theory — planarity, chromatic number, Hamiltonian vs Eulerian conditions</li>
         <li>Combinatorics — permutations, combinations, Pigeonhole principle, inclusion-exclusion</li>
         <li>Logic — propositional + predicate, CNF/DNF, satisfiability, tautology</li>
-        <li>Recurrence relations — solving via characteristic equation</li>
       </ul>
-      <h4>Key Formulas</h4>
-      <div class="formula-block">
-Euler's Formula (planar connected graph): V − E + F = 2
-Simple planar graph:       E ≤ 3V − 6
-No triangles (bipartite):  E ≤ 2V − 4
-Handshaking lemma: sum of all degrees = 2|E|
-Eulerian circuit exists ↔ all vertices have even degree</div>
+      <div class="formula-block">Euler's Formula (planar connected): V − E + F = 2
+Simple planar:     E ≤ 3V − 6
+No triangles:      E ≤ 2V − 4
+Handshaking:       sum of all degrees = 2|E|
+Eulerian circuit ↔ all vertices have even degree</div>
     </div>
   </div>
 
   <div class="accordion" style="--accent-color:var(--peach-b);" id="acc-aptitude">
     <div class="acc-header" onclick="toggle('acc-aptitude')">
       <span class="acc-dot" style="background:var(--peach-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-high">High Priority</span>
-        <span class="acc-title">General Aptitude</span>
-      </div>
-      <span class="acc-marks">15 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-high">High Priority</span><span class="acc-title">General Aptitude</span></div>
+      <span class="acc-marks">15 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
       <h4>Free Marks — Take Every Single One</h4>
-      <p>15 marks that require zero CS knowledge. The only exam section where a well-rested brain beats a well-studied one. Drill 3–4 years of previous GATE aptitude sections.</p>
-      <h4>Sections</h4>
+      <p>15 marks requiring zero CS knowledge. The only section where a well-rested brain beats a well-studied one. Drill 3–4 years of previous GATE aptitude sections.</p>
       <ul>
         <li>Verbal — reading comprehension, fill in the blanks, sentence correction, synonyms/antonyms</li>
         <li>Quantitative — percentages, ratios, averages, time-speed-distance, work-rate, profit-loss</li>
         <li>Logical reasoning — syllogisms, number series, blood relations, directions, coding-decoding</li>
       </ul>
-      <div class="tip-block">
-        <strong>Exam-Room Strategy</strong>
-        Attempt aptitude after clearing your confident CS questions. Fresh eyes catch verbal traps that a tired CS-mode brain misses. Quantitative questions are Class 10 maths wearing a suit — don't overthink them.
-      </div>
+      <div class="tip-block"><strong>Exam-Room Strategy</strong>Attempt aptitude after clearing confident CS questions. Fresh eyes catch verbal traps that a tired CS-mode brain misses. Quantitative questions are Class 10 maths wearing a suit — don't overthink.</div>
     </div>
   </div>
 
   <hr class="divider">
-
-  <!-- ══ MEDIUM PRIORITY ══ -->
-  <div class="section-title">
-    Medium Priority — Fill Remaining Slots
-    <span class="section-pill" style="background:var(--lemon);color:var(--lemon-d);">~25 marks</span>
-  </div>
+  <div class="section-title">Medium Priority — Fill Remaining Slots <span class="section-pill" style="background:var(--lemon);color:var(--lemon-d);">~25 marks</span></div>
 
   <div class="accordion" style="--accent-color:var(--lemon-b);" id="acc-coa">
     <div class="acc-header" onclick="toggle('acc-coa')">
       <span class="acc-dot" style="background:var(--lemon-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-med">Medium</span>
-        <span class="acc-title">Computer Organisation & Architecture</span>
-      </div>
-      <span class="acc-marks">~5–7 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-med">Medium</span><span class="acc-title">Computer Organisation &amp; Architecture</span></div>
+      <span class="acc-marks">~5–7 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
-      <h4>Focus Only On These</h4>
       <ul>
-        <li>Cache — direct mapped, set associative, fully associative. Calculate hit ratio and average access time.</li>
+        <li>Cache — direct mapped, set associative, fully associative. Hit ratio and average access time.</li>
         <li>Pipeline — stages, structural/data/control hazards, stall cycles, speedup formula</li>
         <li>Number representation — 2's complement arithmetic, IEEE 754 floating point</li>
         <li>Addressing modes — immediate, direct, indirect, indexed, register</li>
         <li>I/O — DMA vs interrupt-driven vs programmed I/O</li>
       </ul>
-      <div class="formula-block">
-Cache avg access time = h×T_cache + (1−h)×T_memory
+      <div class="formula-block">Cache avg access time = h×T_cache + (1−h)×T_memory
 Pipeline speedup      = n×k / (k + n − 1)
   where n = instructions, k = pipeline stages</div>
     </div>
@@ -914,15 +555,10 @@ Pipeline speedup      = n×k / (k + n − 1)
   <div class="accordion" style="--accent-color:var(--lemon-b);" id="acc-compiler">
     <div class="acc-header" onclick="toggle('acc-compiler')">
       <span class="acc-dot" style="background:var(--lemon-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-med">Medium</span>
-        <span class="acc-title">Compiler Design</span>
-      </div>
-      <span class="acc-marks">~5–6 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-med">Medium</span><span class="acc-title">Compiler Design</span></div>
+      <span class="acc-marks">~5–6 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
-      <h4>What GATE Actually Asks</h4>
       <ul>
         <li>Lexical analysis — regex to NFA/DFA, token recognition</li>
         <li>Parsing — FIRST and FOLLOW sets, constructing LL(1) parse table</li>
@@ -930,25 +566,17 @@ Pipeline speedup      = n×k / (k + n − 1)
         <li>Syntax-directed translation — S-attributed vs L-attributed grammars</li>
         <li>Code generation — 3-address code, DAG-based optimisation</li>
       </ul>
-      <div class="tip-block">
-        <strong>FIRST/FOLLOW Appears Every Year</strong>
-        The algorithm is purely mechanical. Drill 2–3 examples from previous papers. GATE gives you the grammar and asks the table — this is a guaranteed 2 marks for anyone who practices it once.
-      </div>
+      <div class="tip-block"><strong>FIRST/FOLLOW Appears Every Year</strong>The algorithm is purely mechanical. Drill 2–3 examples from previous papers. This is a guaranteed 2 marks for anyone who practices it once.</div>
     </div>
   </div>
 
   <div class="accordion" style="--accent-color:var(--lemon-b);" id="acc-dl">
     <div class="acc-header" onclick="toggle('acc-dl')">
       <span class="acc-dot" style="background:var(--lemon-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-med">Medium</span>
-        <span class="acc-title">Digital Logic</span>
-      </div>
-      <span class="acc-marks">~4–6 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-med">Medium</span><span class="acc-title">Digital Logic</span></div>
+      <span class="acc-marks">~4–6 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
-      <h4>Revision List</h4>
       <ul>
         <li>Boolean algebra — De Morgan's laws, SOP/POS, canonical forms</li>
         <li>K-maps — 2/3/4 variable minimisation, grouping rules</li>
@@ -962,15 +590,10 @@ Pipeline speedup      = n×k / (k + n − 1)
   <div class="accordion" style="--accent-color:var(--lemon-b);" id="acc-prog">
     <div class="acc-header" onclick="toggle('acc-prog')">
       <span class="acc-dot" style="background:var(--lemon-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-med">Medium</span>
-        <span class="acc-title">Programming in C</span>
-      </div>
-      <span class="acc-marks">~4–5 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-med">Medium</span><span class="acc-title">Programming in C</span></div>
+      <span class="acc-marks">~4–5 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
-      <h4>The C Traps GATE Loves</h4>
       <ul>
         <li>Pointers — pointer arithmetic, pointer to pointer, function pointers, NULL derefs</li>
         <li>Recursion — trace execution, find output, count recursive calls</li>
@@ -978,97 +601,56 @@ Pipeline speedup      = n×k / (k + n − 1)
         <li>Struct / union — size calculation (memory alignment padding!)</li>
         <li>Scope and storage — static, auto, extern, register, lifetime rules</li>
       </ul>
-      <div class="tip-block">
-        <strong>The Golden Rule for "What is the output?" Questions</strong>
-        Don't read code. Trace it. Write variable values on paper as each line executes. 60% of wrong answers come from assuming the code does what it looks like it does.
-      </div>
+      <div class="tip-block"><strong>The Golden Rule for "What is the output?" Questions</strong>Don't read code. Trace it. Write variable values on paper as each line executes. 60% of wrong answers come from assuming the code does what it looks like it does.</div>
     </div>
   </div>
 
   <div class="accordion" style="--accent-color:var(--sky-b);" id="acc-se">
     <div class="acc-header" onclick="toggle('acc-se')">
       <span class="acc-dot" style="background:var(--sky-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-low">30 Min Cap</span>
-        <span class="acc-title">Software Engineering</span>
-      </div>
-      <span class="acc-marks">~2–3 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-low">30 Min Cap</span><span class="acc-title">Software Engineering</span></div>
+      <span class="acc-marks">~2–3 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
-      <h4>The Short List — Nothing More</h4>
       <ul>
         <li>SDLC models — Waterfall, Spiral, Agile (conceptual questions only)</li>
         <li>Cohesion order (best→worst): Functional &gt; Sequential &gt; Communicational &gt; Procedural &gt; Temporal &gt; Logical &gt; Coincidental</li>
         <li>Coupling order (best→worst): Data &lt; Stamp &lt; Control &lt; External &lt; Common &lt; Content</li>
-        <li>Cyclomatic Complexity = E − V + 2P (P = connected components, usually 1)</li>
-        <li>Testing types — white box, black box, boundary value, equivalence partitioning</li>
+        <li>Cyclomatic Complexity = E − V + 2P</li>
+        <li>Testing — white box, black box, boundary value, equivalence partitioning</li>
       </ul>
-      <div class="info-block">
-        <strong>Seriously, 30 minutes max</strong>
-        Software Engineering is 2–3 marks at most. Memorise the coupling/cohesion order mnemonic, do one cyclomatic complexity example, then move on. Every minute here costs you marks in OS or DSA.
-      </div>
+      <div class="info-block"><strong>Seriously, 30 minutes max</strong>SE is 2–3 marks at most. Memorise the coupling/cohesion order, do one cyclomatic complexity example, move on. Every extra minute here costs you marks elsewhere.</div>
     </div>
   </div>
 
   <hr class="divider">
-
-  <!-- ══ 2-DAY PLAN ══ -->
-  <div class="section-title">
-    The 48-Hour Battle Plan
-    <span class="section-pill" style="background:var(--lavender);color:var(--lav-d);">Click to Expand</span>
-  </div>
+  <div class="section-title">The 48-Hour Battle Plan <span class="section-pill" style="background:var(--lavender);color:var(--lav-d);">Click to Expand</span></div>
 
   <div class="accordion" style="--accent-color:var(--lav-b);" id="acc-day1">
     <div class="acc-header" onclick="toggle('acc-day1')">
       <span class="acc-dot" style="background:var(--lav-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-day">Day 1</span>
-        <span class="acc-title">Maths + DSA + OS + DBMS — the heavy hitters</span>
-      </div>
-      <span class="acc-marks">~46 marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-day">Day 1</span><span class="acc-title">Maths + DSA + OS + DBMS — the heavy hitters</span></div>
+      <span class="acc-marks">~46 marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
       <h4>Morning Block (90 min) — Engineering Maths</h4>
       <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-time">0:00 – 0:30</span>
-          <span class="tl-text">Write out linear algebra + probability formulas from memory. The act of writing rewires retrieval pathways.</span>
-        </div>
-        <div class="tl-item">
-          <span class="tl-time">0:30 – 1:30</span>
-          <span class="tl-text">Solve 20 previous year GATE Maths questions under mild time pressure. No peeking at solutions mid-problem.</span>
-        </div>
+        <div class="tl-item"><span class="tl-time">0:00 – 0:30</span><span class="tl-text">Write out linear algebra + probability formulas from memory. The act of writing rewires retrieval pathways.</span></div>
+        <div class="tl-item"><span class="tl-time">0:30 – 1:30</span><span class="tl-text">Solve 20 previous year GATE Maths questions under mild time pressure. No peeking at solutions mid-problem.</span></div>
       </div>
       <h4>Midday Block (90 min) — DSA</h4>
       <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-time">Break first</span>
-          <span class="tl-text">Eat something real. Drink water. A well-fed brain processes algorithms faster than a caffeinated hungry one.</span>
-        </div>
-        <div class="tl-item">
-          <span class="tl-time">DSA session</span>
-          <span class="tl-text">Sorting complexity table → Master theorem → BFS/DFS trace on a graph. Then 25 PYQs.</span>
-        </div>
+        <div class="tl-item"><span class="tl-time">Break first</span><span class="tl-text">Eat something real. Drink water. A well-fed brain processes algorithms faster than a caffeinated hungry one.</span></div>
+        <div class="tl-item"><span class="tl-time">DSA session</span><span class="tl-text">Sorting complexity table → Master theorem → BFS/DFS trace. Then 25 PYQs. Use the interactive DSA panel above if you need concept refreshers.</span></div>
       </div>
-      <h4>Afternoon Block (90 min) — Operating Systems</h4>
+      <h4>Afternoon Block (90 min) — OS</h4>
       <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-time">OS session</span>
-          <span class="tl-text">Scheduling calculations (compute waiting time) → Banker's algo (one full example) → LRU vs FIFO page replacement. 20 PYQs focused on numerical answers.</span>
-        </div>
+        <div class="tl-item"><span class="tl-time">OS session</span><span class="tl-text">Scheduling calculations → Banker's algo (one full example) → LRU vs FIFO page replacement. 20 PYQs.</span></div>
       </div>
       <h4>Evening Block (90 min) — DBMS</h4>
       <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-time">DBMS session</span>
-          <span class="tl-text">FD closure drill → Normalisation identification from given FDs → One SQL nested query → 15 PYQs.</span>
-        </div>
-        <div class="tl-item">
-          <span class="tl-time">End of Day</span>
-          <span class="tl-text">Stop studying. Sleep is not laziness — it is when your hippocampus moves today's work into long-term memory. You will be sharper tomorrow for it.</span>
-        </div>
+        <div class="tl-item"><span class="tl-time">DBMS session</span><span class="tl-text">FD closure drill → Normalisation identification → One SQL nested query → 15 PYQs.</span></div>
+        <div class="tl-item"><span class="tl-time">End of Day</span><span class="tl-text">Stop studying. Sleep is when your hippocampus moves today's work into long-term memory. You will be sharper tomorrow for it.</span></div>
       </div>
     </div>
   </div>
@@ -1076,98 +658,61 @@ Pipeline speedup      = n×k / (k + n − 1)
   <div class="accordion" style="--accent-color:var(--lav-b);" id="acc-day2">
     <div class="acc-header" onclick="toggle('acc-day2')">
       <span class="acc-dot" style="background:var(--lav-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-day">Day 2</span>
-        <span class="acc-title">Networks + TOC + Discrete + Full Mock + Aptitude</span>
-      </div>
-      <span class="acc-marks">~30+ marks</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-day">Day 2</span><span class="acc-title">Networks + TOC + Discrete + Full Mock + Aptitude</span></div>
+      <span class="acc-marks">~30+ marks</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
       <h4>Morning Block (90 min) — Networks + TOC</h4>
       <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-time">Networks (45 min)</span>
-          <span class="tl-text">ALOHA efficiency formulas → subnetting drill (10 problems) → TCP window/throughput. 15 PYQs.</span>
-        </div>
-        <div class="tl-item">
-          <span class="tl-time">TOC (45 min)</span>
-          <span class="tl-text">Closure properties table → 10 decidability questions → 1 DFA minimisation trace. Rice's theorem examples.</span>
-        </div>
+        <div class="tl-item"><span class="tl-time">Networks (45 min)</span><span class="tl-text">ALOHA efficiency formulas → subnetting drill → TCP window/throughput. 15 PYQs.</span></div>
+        <div class="tl-item"><span class="tl-time">TOC (45 min)</span><span class="tl-text">Closure properties table → 10 decidability questions → 1 DFA minimisation trace. Rice's theorem examples.</span></div>
       </div>
       <h4>Midday Block (90 min) — Discrete + Medium Subjects</h4>
       <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-time">Discrete Maths (45 min)</span>
-          <span class="tl-text">Graph planarity (Euler's formula) → counting + Pigeonhole → 10 PYQs from logic and combinatorics.</span>
-        </div>
-        <div class="tl-item">
-          <span class="tl-time">COA / Compiler / DL (45 min)</span>
-          <span class="tl-text">Cache formula, pipeline speedup, FIRST/FOLLOW one grammar example, K-map simplification (2 problems). Skim only.</span>
-        </div>
+        <div class="tl-item"><span class="tl-time">Discrete Maths (45 min)</span><span class="tl-text">Graph planarity → counting + Pigeonhole → 10 PYQs from logic and combinatorics.</span></div>
+        <div class="tl-item"><span class="tl-time">COA/Compiler/DL (45 min)</span><span class="tl-text">Cache formula, pipeline speedup, FIRST/FOLLOW one example, K-map (2 problems). Skim only.</span></div>
       </div>
-      <h4>Afternoon — The Most Important Thing You Will Do</h4>
+      <h4>Afternoon — The Most Important Session</h4>
       <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-time">Full Mock Paper (3 hrs)</span>
-          <span class="tl-text">Sit a complete previous year GATE CS paper under real exam conditions. Timer on. Phone away. This single session will teach you more than 6 more hours of reading theory.</span>
-        </div>
-        <div class="tl-item">
-          <span class="tl-time">Post-Mock Review (30 min)</span>
-          <span class="tl-text">Review wrong answers only. Note the pattern. Don't spiral into re-studying everything — identify weak spots and patch exactly those.</span>
-        </div>
+        <div class="tl-item"><span class="tl-time">Full Mock Paper (3 hrs)</span><span class="tl-text">Sit a complete previous year GATE CS paper under real exam conditions. Timer on. Phone away. This single session teaches more than 6 extra hours of theory.</span></div>
+        <div class="tl-item"><span class="tl-time">Post-Mock Review (30 min)</span><span class="tl-text">Review wrong answers only. Note the pattern. Don't spiral — identify weak spots and patch exactly those.</span></div>
       </div>
       <h4>Evening (30 min) — General Aptitude Sprint</h4>
       <div class="timeline">
-        <div class="tl-item">
-          <span class="tl-time">Aptitude Drill</span>
-          <span class="tl-text">Two years of GATE aptitude sections only. Speed-run. These are free marks and you want them.</span>
-        </div>
-        <div class="tl-item">
-          <span class="tl-time">Tonight</span>
-          <span class="tl-text">Zero new material. Review your personal formula sheet. Lay out everything for tomorrow. Sleep at a reasonable hour. You are as ready as you need to be.</span>
-        </div>
+        <div class="tl-item"><span class="tl-time">Aptitude Drill</span><span class="tl-text">Two years of GATE aptitude sections. Speed-run. These are free marks and you want them.</span></div>
+        <div class="tl-item"><span class="tl-time">Tonight</span><span class="tl-text">Zero new material. Review your formula sheet. Lay out everything for tomorrow. Sleep at a reasonable hour.</span></div>
       </div>
     </div>
   </div>
 
   <hr class="divider">
 
-  <!-- ══ THE EDGE ══ -->
   <div class="accordion" style="--accent-color:var(--rose-b);" id="acc-edge">
     <div class="acc-header" onclick="toggle('acc-edge')">
       <span class="acc-dot" style="background:var(--rose-b);"></span>
-      <div class="acc-left">
-        <span class="acc-badge b-edge">The Mindset</span>
-        <span class="acc-title">What actually separates scorers from panickers</span>
-      </div>
-      <span class="acc-marks">read this</span>
-      <span class="acc-arrow">▶</span>
+      <div class="acc-left"><span class="acc-badge b-edge">The Mindset</span><span class="acc-title">What actually separates scorers from panickers</span></div>
+      <span class="acc-marks">read this</span><span class="acc-arrow">▶</span>
     </div>
     <div class="acc-body">
       <h4>GATE is not testing whether you know CS</h4>
-      <p>It's testing whether you can retrieve what you've already learned under a time constraint. Two days of smart preparation is retrieval practice — not learning from scratch. There's a significant difference.</p>
+      <p>It's testing whether you can retrieve what you've already learned under a time constraint. Two days of smart preparation is retrieval practice — not learning from scratch.</p>
       <h4>The 70/30 Rule for Last-Minute Prep</h4>
       <ul>
-        <li>70% of your time should be solving previous year questions — pattern recognition is the skill being tested</li>
-        <li>30% should be refreshing formulas and closure property tables — the raw material for pattern recognition</li>
-        <li>0% should be reading textbook chapters from the beginning — that time is gone and this isn't the moment</li>
+        <li>70% of your time solving previous year questions — pattern recognition is the actual skill being tested</li>
+        <li>30% refreshing formulas and closure property tables — the raw material for pattern recognition</li>
+        <li>0% reading textbook chapters from the beginning — that window is gone and this isn't the moment</li>
       </ul>
       <h4>Physical Performance Matters Too</h4>
       <ul>
-        <li>Study in 90-minute blocks — research consistently shows this is the natural cognitive peak window</li>
+        <li>Study in 90-minute blocks — research shows this is the natural cognitive peak window</li>
         <li>Drink water — even mild dehydration measurably degrades working memory speed</li>
-        <li>Don't study past midnight — the hippocampus consolidates memory during sleep, not extra study hours</li>
-        <li>When your brain locks up on a topic — switch subjects immediately, return later. Pushing through foggy comprehension wastes time.</li>
+        <li>Don't study past midnight — the hippocampus consolidates memory during sleep, not extra hours</li>
+        <li>When your brain locks up — switch subjects immediately, return later. Foggy comprehension wastes time.</li>
       </ul>
-      <div class="tip-block">
-        <strong>The Only Mindset That Moves Marks</strong>
-        Confidence is not arrogance. It's the cognitive state in which your brain accesses stored knowledge fastest. Every exam-room panicker knows the material — they just can't access it. Breathe. You have this.
-      </div>
+      <div class="tip-block"><strong>The Only Mindset That Moves Marks</strong>Confidence is the cognitive state in which your brain accesses stored knowledge fastest. Every exam-room panicker knows the material — they just can't access it. Breathe. You have this.</div>
     </div>
   </div>
 
-  <!-- FINAL BOX -->
   <div class="final-box">
     <div class="big-q">"The knowledge is already there.<br>The exam is just the retrieval test."</div>
     <p>Two days, done right, is more than enough. Close this guide. Open a previous year paper. Time it. Check your answers. That loop — right there — is everything.</p>
@@ -1176,14 +721,525 @@ Pipeline speedup      = n×k / (k + n − 1)
 
 </div>
 
+<!-- ═══ DSA DEEP DIVE OVERLAY ═══ -->
+<div id="dsa-overlay" onclick="handleOverlayClick(event)">
+  <div id="dsa-panel">
+    <div class="dsa-panel-header">
+      <div>
+        <h2>DSA Master Notes</h2>
+        <div class="dsa-panel-sub">Sorting · Trees &amp; BST · AVL Rotations · Graphs · Hashing · Heaps · Master Theorem · 10 GATE MCQs</div>
+      </div>
+      <button class="dsa-close" onclick="closeDSA()">✕</button>
+    </div>
+    <div class="dsa-panel-body">
+
+      <nav class="nav" role="tablist">
+        <button class="nb act" onclick="show('sort',this)">Sorting</button>
+        <button class="nb" onclick="show('trees',this)">Trees &amp; BST</button>
+        <button class="nb" onclick="show('avl',this)">AVL Rotations</button>
+        <button class="nb" onclick="show('graphs',this)">Graphs</button>
+        <button class="nb" onclick="show('hash',this)">Hashing</button>
+        <button class="nb" onclick="show('heap',this)">Heaps</button>
+        <button class="nb" onclick="show('master',this)">Master Theorem</button>
+        <button class="nb" onclick="show('mcq',this)">GATE MCQs</button>
+      </nav>
+
+      <!-- SORTING -->
+      <div id="sort" class="section show">
+        <div class="card">
+          <h3>Sorting algorithms — complexity &amp; properties</h3>
+          <table>
+            <tr><th>Algorithm</th><th>Best</th><th>Average</th><th>Worst</th><th>Space</th><th>Stable?</th></tr>
+            <tr><td>Bubble</td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td><span class="badge b-green">Yes</span></td></tr>
+            <tr><td>Insertion</td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td><span class="badge b-green">Yes</span></td></tr>
+            <tr><td>Selection</td><td>O(n²)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td><span class="badge b-red">No</span></td></tr>
+            <tr><td><strong>Merge</strong></td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td><td><span class="badge b-green">Yes</span></td></tr>
+            <tr><td><strong>Quick</strong></td><td>O(n log n)</td><td>O(n log n)</td><td>O(n²)</td><td>O(log n)</td><td><span class="badge b-red">No</span></td></tr>
+            <tr><td>Heap</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(1)</td><td><span class="badge b-red">No</span></td></tr>
+            <tr><td>Counting</td><td>O(n+k)</td><td>O(n+k)</td><td>O(n+k)</td><td>O(n+k)</td><td><span class="badge b-green">Yes</span></td></tr>
+            <tr><td>Radix</td><td>O(d(n+k))</td><td>O(d(n+k))</td><td>O(d(n+k))</td><td>O(n+k)</td><td><span class="badge b-green">Yes</span></td></tr>
+          </table>
+          <div class="trap"><strong>GATE trap — stability:</strong> Merge=Stable, Insertion=Stable, Bubble=Stable, Counting=Stable, Radix=Stable. Quick=NOT stable, Heap=NOT stable, Selection=NOT stable. Asked every 2–3 years.</div>
+          <div class="trap"><strong>GATE trap — Quick Sort worst case:</strong> O(n²) on sorted input when pivot = first or last element.</div>
+          <div class="tip"><strong>Decision guide:</strong> Need stability → Merge. Memory tight + guaranteed O(n log n) → Heap. Nearly sorted → Insertion. Integer keys → Counting/Radix.</div>
+        </div>
+        <div class="card">
+          <h3>Bubble Sort — interactive trace</h3>
+          <p style="margin-bottom:10px;font-size:14px;color:var(--muted)">Watch each pass. Swapped = <span class="badge b-red">highlighted</span>.</p>
+          <div class="bars" id="bubble-bars"></div>
+          <div class="controls">
+            <button class="btn primary" onclick="bStep()">Next pass</button>
+            <button class="btn" onclick="bReset()">Reset</button>
+            <span id="bubble-info" style="font-size:13px;color:var(--muted)">Pass 1 ready</span>
+          </div>
+          <div id="bubble-log" class="mono" style="min-height:40px"></div>
+          <div class="trap" style="margin-top:12px"><strong>Optimization:</strong> If no swaps in a pass → array is sorted → break early. Best case becomes O(n).</div>
+        </div>
+        <div class="card">
+          <h3>Insertion Sort — trace on [12, 11, 13, 5, 6]</h3>
+          <table>
+            <tr><th>Step</th><th>Insert</th><th>Sorted prefix before</th><th>Action</th><th>Array after</th></tr>
+            <tr><td>1</td><td>12</td><td>[ ]</td><td>First element</td><td>[<b>12</b>]</td></tr>
+            <tr><td>2</td><td>11</td><td>[12]</td><td>Shift 12 right</td><td>[<b>11</b>, 12]</td></tr>
+            <tr><td>3</td><td>13</td><td>[11, 12]</td><td>No shift needed</td><td>[11, 12, <b>13</b>]</td></tr>
+            <tr><td>4</td><td>5</td><td>[11, 12, 13]</td><td>Shift all right</td><td>[<b>5</b>, 11, 12, 13]</td></tr>
+            <tr><td>5</td><td>6</td><td>[5, 11, 12, 13]</td><td>Shift 11,12,13 right</td><td>[5, <b>6</b>, 11, 12, 13]</td></tr>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Merge Sort — divide and conquer on [38, 27, 43, 3, 9, 82, 10]</h3>
+          <div class="mono">Divide:  [38,27,43,3] | [9,82,10]
+Sort L:  [38,27]→[27,38]   [43,3]→[3,43]   → merge → [3,27,38,43]
+Sort R:  [9,82]→[9,82]     [10]→[10]        → merge → [9,10,82]
+Final:   merge [3,27,38,43] + [9,10,82] → [3,9,10,27,38,43,82]</div>
+          <div class="tip"><strong>Why stable?</strong> During merge, when left[i] == right[j], we ALWAYS take from the LEFT first — preserving relative order.</div>
+          <div class="gate"><strong>Recurrence:</strong> T(n) = 2T(n/2) + n → Θ(n log n) [Master Theorem Case 2]</div>
+        </div>
+        <div class="card">
+          <h3>When to use which sort</h3>
+          <div class="step-row">
+            <div class="step-box"><div class="sn">Small n &lt; 20</div><div class="sv">Insertion Sort</div></div>
+            <div class="step-box"><div class="sn">Nearly sorted</div><div class="sv">Insertion Sort</div></div>
+            <div class="step-box"><div class="sn">Stability required</div><div class="sv">Merge / Counting / Radix</div></div>
+            <div class="step-box"><div class="sn">Memory tight</div><div class="sv">Heap Sort O(1) space</div></div>
+            <div class="step-box"><div class="sn">General purpose</div><div class="sv">Quick Sort (random pivot)</div></div>
+            <div class="step-box"><div class="sn">Integer keys</div><div class="sv">Counting / Radix</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TREES -->
+      <div id="trees" class="section">
+        <div class="card">
+          <h3>Tree terminology — key formulas</h3>
+          <div class="grid2">
+            <div>
+              <table>
+                <tr><th>Term</th><th>Definition</th></tr>
+                <tr><td>Height of leaf</td><td>0 (by convention)</td></tr>
+                <tr><td>Height of empty tree</td><td>−1</td></tr>
+                <tr><td>Depth of node</td><td>Path length from root</td></tr>
+                <tr><td>Level</td><td>Depth + 1 (root = level 1)</td></tr>
+              </table>
+            </div>
+            <div>
+              <div class="mono">Max nodes at level i:       2^i
+Max total (height h):       2^(h+1) - 1
+Min height for n nodes:     ⌊log₂ n⌋
+Max height for n nodes:     n - 1 (skewed)
+Full BT:  leaves = internal + 1
+Complete BT leaves:  ⌈n/2⌉</div>
+            </div>
+          </div>
+          <div class="trap"><strong>GATE trap:</strong> An empty tree has height −1. A single-node tree has height 0.</div>
+        </div>
+        <div class="card">
+          <h3>Binary tree traversals</h3>
+          <div class="mono">            1
+           / \
+          2   3
+         / \
+        4   5
+
+Preorder  (Root-L-R): 1 → 2 → 4 → 5 → 3
+Inorder   (L-Root-R): 4 → 2 → 5 → 1 → 3   ← sorted in BST!
+Postorder (L-R-Root): 4 → 5 → 2 → 3 → 1
+Level     (BFS):      1 → 2 → 3 → 4 → 5</div>
+          <div class="trap"><strong>Reconstruction rule:</strong> Inorder + Preorder → unique tree. Inorder + Postorder → unique tree. Preorder + Postorder alone → NOT unique.</div>
+        </div>
+        <div class="card">
+          <h3>BST operations — complexities</h3>
+          <table>
+            <tr><th>Operation</th><th>Average</th><th>Worst (skewed)</th></tr>
+            <tr><td>Search</td><td>O(log n)</td><td>O(n)</td></tr>
+            <tr><td>Insert</td><td>O(log n)</td><td>O(n)</td></tr>
+            <tr><td>Delete</td><td>O(log n)</td><td>O(n)</td></tr>
+          </table>
+          <div class="step-row">
+            <div class="step-box"><div class="sn">Delete Case 1</div><div class="sv">Leaf → simply remove</div></div>
+            <div class="step-box"><div class="sn">Delete Case 2</div><div class="sv">One child → replace with child</div></div>
+            <div class="step-box"><div class="sn">Delete Case 3</div><div class="sv">Two children → replace with inorder successor</div></div>
+          </div>
+          <div class="trap"><strong>GATE trap:</strong> Inserting sorted values 1,2,3,4,5 creates a right-skewed list. Height = n−1. All operations become O(n). This is WHY AVL trees exist.</div>
+        </div>
+      </div>
+
+      <!-- AVL -->
+      <div id="avl" class="section">
+        <div class="card">
+          <h3>AVL trees — self-balancing BST</h3>
+          <p style="font-size:14px;color:var(--muted);margin-bottom:10px">Balance Factor (BF) = Height(left) − Height(right). Must be ∈ {−1, 0, +1} at every node.</p>
+          <div class="grid2">
+            <div class="metric"><div class="ml">Valid BF values</div><div class="mv">−1, 0, +1</div></div>
+            <div class="metric"><div class="ml">Guaranteed height</div><div class="mv">O(log n)</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Four rotation cases</h3>
+          <div class="controls" style="margin-bottom:14px">
+            <button class="btn primary" onclick="showRot('LL')">LL case</button>
+            <button class="btn" onclick="showRot('RR')">RR case</button>
+            <button class="btn" onclick="showRot('LR')">LR case</button>
+            <button class="btn" onclick="showRot('RL')">RL case</button>
+          </div>
+          <div id="rot-LL">
+            <div class="gate"><strong>LL case:</strong> BF(z) = +2 and BF(y) = +1. Fix: single RIGHT rotation at z.</div>
+            <div class="mono">Before:   z (+2)         After RIGHT rotation at z:
+         / \                  y (0)
+        y (+1) T4            / \
+       / \               x     z (0)
+      x   T3            / \   / \
+                       T1 T2 T3  T4</div>
+            <div class="tip"><strong>Memory:</strong> Lean Left → fall Right (single right rotation).</div>
+          </div>
+          <div id="rot-RR" style="display:none">
+            <div class="gate"><strong>RR case:</strong> BF(z) = −2 and BF(y) = −1. Fix: single LEFT rotation at z.</div>
+            <div class="mono">Before:  z (−2)         After LEFT rotation at z:
+          \                    y (0)
+          y (−1)              / \
+         / \              z (0)   x
+        T2   x            / \    / \
+            / \          T1  T2 T3 T4
+           T3  T4</div>
+            <div class="tip"><strong>Memory:</strong> Lean Right → fall Left (single left rotation).</div>
+          </div>
+          <div id="rot-LR" style="display:none">
+            <div class="gate"><strong>LR case:</strong> BF(z) = +2 and BF(y) = −1. Fix: LEFT on y, then RIGHT on z. Two rotations.</div>
+            <div class="mono">Step 1: LEFT rotate at y → straightens the kink
+Step 2: RIGHT rotate at z → same as LL case now</div>
+            <div class="trap"><strong>Two rotations required.</strong> The LR "kink" must be straightened before the final rotation.</div>
+          </div>
+          <div id="rot-RL" style="display:none">
+            <div class="gate"><strong>RL case:</strong> BF(z) = −2 and BF(y) = +1. Fix: RIGHT on y, then LEFT on z. Two rotations.</div>
+            <div class="mono">Mirror image of LR. Still two rotations.</div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Quick reference — which rotation?</h3>
+          <table>
+            <tr><th>BF at z</th><th>BF at child</th><th>Case</th><th>Rotation</th></tr>
+            <tr><td>+2</td><td>+1 (left)</td><td><span class="badge b-purple">LL</span></td><td>1× Right at z</td></tr>
+            <tr><td>−2</td><td>−1 (right)</td><td><span class="badge b-blue">RR</span></td><td>1× Left at z</td></tr>
+            <tr><td>+2</td><td>−1 (left)</td><td><span class="badge b-teal">LR</span></td><td>Left at y, then Right at z</td></tr>
+            <tr><td>−2</td><td>+1 (right)</td><td><span class="badge b-amber">RL</span></td><td>Right at y, then Left at z</td></tr>
+          </table>
+          <div class="tip"><strong>Min nodes in AVL of height h:</strong> N(h) = N(h−1) + N(h−2) + 1. N(0)=1, N(1)=2, N(2)=4, N(3)=7. Like Fibonacci!</div>
+        </div>
+      </div>
+
+      <!-- GRAPHS -->
+      <div id="graphs" class="section">
+        <div class="card">
+          <h3>BFS vs DFS</h3>
+          <table>
+            <tr><th>Property</th><th>BFS</th><th>DFS</th></tr>
+            <tr><td>Data structure</td><td>Queue (FIFO)</td><td>Stack / Recursion</td></tr>
+            <tr><td>Shortest path (unweighted)</td><td><span class="badge b-green">Yes</span></td><td><span class="badge b-red">No</span></td></tr>
+            <tr><td>Cycle detection</td><td>Check visited</td><td>Back edge → cycle</td></tr>
+            <tr><td>Topological sort</td><td>Kahn's algorithm</td><td>Reverse finish order</td></tr>
+            <tr><td>Time complexity</td><td>O(V + E)</td><td>O(V + E)</td></tr>
+          </table>
+          <div class="trap"><strong>GATE trap:</strong> BFS finds shortest path only in UNWEIGHTED graphs. For weighted graphs you need Dijkstra's.</div>
+        </div>
+        <div class="card">
+          <h3>Dijkstra's algorithm — trace</h3>
+          <div class="mono">Graph: A→B(4), A→C(2), C→B(1), B→D(3), C→D(8)
+Initial: dist = {A:0, B:∞, C:∞, D:∞}
+
+Step 1: Extract A(0). Relax A→B: dist[B]=4; A→C: dist[C]=2.
+Step 2: Extract C(2). Relax C→B: min(4,3)=3✓; C→D: dist[D]=10.
+Step 3: Extract B(3). Relax B→D: min(10,6)=6✓.
+Step 4: Extract D(6). Done.
+
+Final: A=0, C=2, B=3, D=6</div>
+          <div class="trap"><strong>Negative weights → Dijkstra FAILS.</strong> Use Bellman-Ford instead. Bellman-Ford: relax ALL edges V−1 times.</div>
+        </div>
+        <div class="card">
+          <h3>Minimum Spanning Tree</h3>
+          <div class="step-row">
+            <div class="step-box"><div class="sn">Prim's MST</div><div class="sv">Grow from one vertex. Add cheapest edge connecting tree to non-tree. O((V+E) log V) with heap.</div></div>
+            <div class="step-box"><div class="sn">Kruskal's MST</div><div class="sv">Sort all edges. Add if no cycle (Union-Find). O(E log E). Better for sparse graphs.</div></div>
+          </div>
+          <div class="gate"><strong>Both produce same weight MST</strong> (may differ in structure if tie-weight edges exist). Both are greedy.</div>
+        </div>
+      </div>
+
+      <!-- HASHING -->
+      <div id="hash" class="section">
+        <div class="card">
+          <h3>Hashing fundamentals</h3>
+          <table>
+            <tr><th>Term</th><th>Definition</th></tr>
+            <tr><td>Load factor α</td><td>n/m (keys/slots). Affects collision probability.</td></tr>
+            <tr><td>Collision</td><td>Two keys hash to same slot</td></tr>
+            <tr><td>Perfect hashing</td><td>No collisions possible (impractical for general use)</td></tr>
+            <tr><td>Avg search (chaining)</td><td>O(1 + α)</td></tr>
+            <tr><td>Avg search (open addr)</td><td>O(1/(1−α)) — degrades rapidly as α→1</td></tr>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Chaining — trace</h3>
+          <div class="mono">h(x) = x % 5. Insert: 10, 15, 20, 7, 25
+Slot 0: 10 → 15 → 20 → 25   (all % 5 = 0)
+Slot 2: 7                     (7 % 5 = 2)</div>
+          <div class="tip"><strong>Advantage:</strong> Simple deletion. Works well even at high load factors. α can exceed 1.</div>
+        </div>
+        <div class="card">
+          <h3>Open addressing — linear probing</h3>
+          <div class="mono">h(x) = x % 5,  probe: (h(x) + i) % 5
+Insert: 10, 15, 20, 7
+Key 10: h=0 → empty → Slot 0        [10, −, −, −, −]
+Key 15: h=0 → occupied → try 1      [10, 15, −, −, −]
+Key 20: h=0 → try 1 → try 2         [10, 15, 20, −, −]
+Key  7: h=2 → occupied → try 3      [10, 15, 20, 7, −]</div>
+          <div class="trap"><strong>Primary clustering:</strong> Long probe chains form. Use quadratic probing or double hashing to reduce clustering.</div>
+          <div class="trap"><strong>Deletion:</strong> CANNOT mark slot as empty — use tombstone/DELETED marker. Otherwise search chains break.</div>
+        </div>
+        <div class="card">
+          <h3>Chaining vs Open Addressing</h3>
+          <table>
+            <tr><th>Feature</th><th>Chaining</th><th>Open Addressing</th></tr>
+            <tr><td>α &gt; 1 allowed?</td><td><span class="badge b-green">Yes</span></td><td><span class="badge b-red">No</span></td></tr>
+            <tr><td>Deletion</td><td>Simple</td><td>Hard (tombstone needed)</td></tr>
+            <tr><td>Clustering</td><td>None</td><td>Primary/secondary</td></tr>
+            <tr><td>Cache performance</td><td>Poor</td><td>Better (array locality)</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- HEAPS -->
+      <div id="heap" class="section">
+        <div class="card">
+          <h3>Heap properties</h3>
+          <div class="grid2">
+            <div><div style="font-weight:600;font-size:14px;margin-bottom:8px;color:var(--text)">Max-Heap</div><div class="mono">Parent ≥ children
+Root = MAXIMUM
+Use: Heap Sort, max-priority queue</div></div>
+            <div><div style="font-weight:600;font-size:14px;margin-bottom:8px;color:var(--text)">Min-Heap</div><div class="mono">Parent ≤ children
+Root = MINIMUM
+Use: Dijkstra's, Prim's MST</div></div>
+          </div>
+          <h3 style="margin-top:12px">Array representation (0-indexed)</h3>
+          <div class="mono">Left child of i:  2i + 1
+Right child of i: 2i + 2
+Parent of i:      ⌊(i−1) / 2⌋</div>
+          <table style="margin-top:12px">
+            <tr><th>Operation</th><th>Time</th></tr>
+            <tr><td>Peek (max/min)</td><td>O(1)</td></tr>
+            <tr><td>Insert</td><td>O(log n)</td></tr>
+            <tr><td>Delete max/min</td><td>O(log n)</td></tr>
+            <tr><td>Build-Heap</td><td><span class="badge b-green">O(n)</span> ← NOT O(n log n)!</td></tr>
+            <tr><td>Heap Sort</td><td>O(n log n)</td></tr>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Build-Heap — why O(n) not O(n log n)</h3>
+          <div class="mono">Most nodes are near the BOTTOM (leaves = 0 work).
+  Height 0 (leaves):  n/2 nodes × 0 work = 0
+  Height 1:           n/4 nodes × 1 work = n/4
+  Height 2:           n/8 nodes × 2 work = n/4
+  Total = n × Σ(k/2^k) = n × 2 = O(n)  ✓</div>
+          <div class="trap"><strong>GATE trap:</strong> Build-Heap = O(n). Heap Sort total = O(n log n). Never say "Build-Heap is O(n log n)".</div>
+        </div>
+        <div class="card">
+          <h3>Heap Sort trace — [4, 10, 3, 5, 1]</h3>
+          <table>
+            <tr><th>Step</th><th>Action</th><th>Array state</th></tr>
+            <tr><td>Build</td><td>Build Max-Heap</td><td>[10, 5, 3, 4, 1]</td></tr>
+            <tr><td>1</td><td>Swap arr[0]↔arr[4], heapify size 4</td><td>[5, 4, 3, 1, | 10]</td></tr>
+            <tr><td>2</td><td>Swap arr[0]↔arr[3], heapify size 3</td><td>[4, 1, 3, | 5, 10]</td></tr>
+            <tr><td>3</td><td>Swap arr[0]↔arr[2], heapify size 2</td><td>[3, 1, | 4, 5, 10]</td></tr>
+            <tr><td>4</td><td>Swap arr[0]↔arr[1], heapify size 1</td><td>[1, | 3, 4, 5, 10]</td></tr>
+            <tr><td>Done</td><td>—</td><td>[1, 3, 4, 5, 10] ✓</td></tr>
+          </table>
+          <div class="tip"><strong>Heap Sort is NOT stable</strong> — but O(n log n) in ALL cases and O(1) extra space.</div>
+        </div>
+      </div>
+
+      <!-- MASTER THEOREM -->
+      <div id="master" class="section">
+        <div class="card">
+          <h3>Master Theorem — the full formula</h3>
+          <div class="mono">T(n) = aT(n/b) + f(n)   where a ≥ 1, b > 1
+Critical exponent:  p = log_b(a)
+
+CASE 1: f(n) = O(n^(p−ε))  →  T(n) = Θ(n^p)   [leaves dominate]
+CASE 2: f(n) = Θ(n^p)      →  T(n) = Θ(n^p · log n)   [tie]
+CASE 3: f(n) = Ω(n^(p+ε)) AND af(n/b) ≤ cf(n)
+                            →  T(n) = Θ(f(n))   [root dominates]</div>
+          <div class="tip"><strong>Memory:</strong> Case 1 = leaves win → n^p. Case 2 = tie → n^p·log n. Case 3 = root wins → f(n).</div>
+          <div class="trap"><strong>NOT applicable when:</strong> n decreases by subtraction T(n)=T(n−1)+... Use substitution or recursion tree instead.</div>
+        </div>
+        <div class="card">
+          <h3>Common recurrences solved</h3>
+          <table>
+            <tr><th>Recurrence</th><th>p=log_b(a)</th><th>Case</th><th>Solution</th><th>Algorithm</th></tr>
+            <tr><td>2T(n/2) + n</td><td>1</td><td>2</td><td>Θ(n log n)</td><td>Merge Sort</td></tr>
+            <tr><td>T(n/2) + 1</td><td>0</td><td>2</td><td>Θ(log n)</td><td>Binary Search</td></tr>
+            <tr><td>4T(n/2) + n</td><td>2</td><td>1</td><td>Θ(n²)</td><td>—</td></tr>
+            <tr><td>4T(n/2) + n²</td><td>2</td><td>2</td><td>Θ(n² log n)</td><td>—</td></tr>
+            <tr><td>4T(n/2) + n³</td><td>2</td><td>3</td><td>Θ(n³)</td><td>—</td></tr>
+            <tr><td>7T(n/2) + n²</td><td>2.807</td><td>1</td><td>Θ(n^2.807)</td><td>Strassen</td></tr>
+          </table>
+        </div>
+        <div class="card" id="master-solver">
+          <h3>Quick solver — enter your recurrence</h3>
+          <div class="controls">
+            <label style="font-size:13px;color:var(--muted)">a =</label>
+            <input type="number" id="ma" value="2" min="1">
+            <label style="font-size:13px;color:var(--muted)">b =</label>
+            <input type="number" id="mb" value="2" min="2">
+            <label style="font-size:13px;color:var(--muted)">f(n) power =</label>
+            <input type="number" id="mf" value="1" step="0.1">
+            <button class="btn primary" onclick="solveMT()">Solve</button>
+          </div>
+          <div id="mt-result" class="mono" style="min-height:40px"></div>
+        </div>
+      </div>
+
+      <!-- MCQ -->
+      <div id="mcq" class="section">
+        <div id="mcq-container"></div>
+      </div>
+
+    </div><!-- end dsa-panel-body -->
+  </div><!-- end dsa-panel -->
+</div><!-- end dsa-overlay -->
+
 <script>
+// Main accordion
 function toggle(id) {
-  const el = document.getElementById(id);
-  el.classList.toggle('open');
+  document.getElementById(id).classList.toggle('open');
 }
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('acc-paper').classList.add('open');
 });
+
+// DSA overlay
+function openDSA() {
+  document.getElementById('dsa-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderBars(bubbleArr);
+}
+function closeDSA() {
+  document.getElementById('dsa-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('dsa-overlay')) closeDSA();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDSA(); });
+
+// DSA tab navigation
+function show(id, btn) {
+  document.querySelectorAll('.dsa-panel-body .section').forEach(s => s.classList.remove('show'));
+  document.querySelectorAll('.dsa-panel-body .nb').forEach(b => b.classList.remove('act'));
+  document.getElementById(id).classList.add('show');
+  btn.classList.add('act');
+}
+
+// AVL rotations
+function showRot(type) {
+  ['LL','RR','LR','RL'].forEach(t => {
+    const el = document.getElementById('rot-'+t);
+    if (el) el.style.display = t === type ? 'block' : 'none';
+  });
+  document.querySelectorAll('#avl .controls .btn').forEach((b,i) => {
+    b.className = 'btn' + (['LL','RR','LR','RL'][i] === type ? ' primary' : '');
+  });
+}
+
+// Bubble sort
+const bubbleArr = [5, 3, 4, 2, 1];
+let bArr = [...bubbleArr], bPass = 0;
+const bColors = ['#8b5cf6','#3dba7e','#f06040','#e6b800','#2d7dd2'];
+
+function renderBars(arr, swapped = []) {
+  const container = document.getElementById('bubble-bars');
+  if (!container) return;
+  const max = Math.max(...arr);
+  container.innerHTML = arr.map((v, i) => {
+    const h = Math.round((v / max) * 100);
+    const bg = swapped.includes(i) ? '#f06040' : bColors[i % bColors.length];
+    return `<div class="bar" style="height:${h}px;background:${bg}"><span>${v}</span></div>`;
+  }).join('');
+}
+
+function bReset() {
+  bArr = [...bubbleArr]; bPass = 0;
+  renderBars(bArr);
+  document.getElementById('bubble-info').textContent = 'Pass 1 ready';
+  document.getElementById('bubble-log').textContent = '';
+}
+
+function bStep() {
+  if (bPass >= bArr.length - 1) {
+    document.getElementById('bubble-info').textContent = 'Fully sorted!'; return;
+  }
+  const swapped = []; let didSwap = false;
+  for (let j = 0; j < bArr.length - bPass - 1; j++) {
+    if (bArr[j] > bArr[j + 1]) {
+      [bArr[j], bArr[j+1]] = [bArr[j+1], bArr[j]];
+      swapped.push(j, j+1); didSwap = true;
+    }
+  }
+  bPass++;
+  renderBars(bArr, swapped);
+  const log = document.getElementById('bubble-log');
+  log.textContent += `Pass ${bPass}: [${bArr.join(', ')}]${!didSwap ? ' — no swaps (sorted early)' : ''}\n`;
+  document.getElementById('bubble-info').textContent = didSwap
+    ? `After pass ${bPass}: ${bPass} largest element${bPass>1?'s':''} in final position`
+    : 'No swaps — sorted early!';
+  if (!didSwap) bPass = bArr.length;
+}
+
+// Master theorem solver
+function solveMT() {
+  const a = parseFloat(document.getElementById('ma').value);
+  const b = parseFloat(document.getElementById('mb').value);
+  const fPow = parseFloat(document.getElementById('mf').value);
+  const p = Math.log(a) / Math.log(b);
+  const pR = Math.round(p * 1000) / 1000;
+  let res = `a = ${a},  b = ${b},  f(n) = n^${fPow}\np = log_${b}(${a}) = ${pR}\n\n`;
+  if (fPow < p - 0.001) res += `f(n) = O(n^${pR}) → CASE 1 (leaves dominate)\nT(n) = Θ(n^${pR})`;
+  else if (Math.abs(fPow - p) < 0.001) res += `f(n) = Θ(n^${pR}) → CASE 2 (tie)\nT(n) = Θ(n^${pR} · log n)`;
+  else res += `f(n) = Ω(n^${pR}) → CASE 3 (root dominates)\nT(n) = Θ(n^${fPow})`;
+  document.getElementById('mt-result').textContent = res;
+}
+
+// MCQs
+const mcqs = [
+  {q:'Which sorting algorithm is NOT stable?',opts:['Merge Sort','Counting Sort','Heap Sort','Insertion Sort'],ans:2,exp:'Heap Sort is NOT stable. Heapify can reorder equal elements. Merge, Counting, and Insertion are all stable.'},
+  {q:'Quick Sort on a sorted array [1,2,3,4,5] with pivot = last element gives worst-case time:',opts:['O(n log n)','O(n)','O(n²)','O(n log² n)'],ans:2,exp:'Sorted input + last-element pivot → partition always creates subarrays of size n−1 and 0 → T(n)=T(n−1)+O(n) → O(n²).'},
+  {q:'Build-Heap from an unsorted array of n elements takes:',opts:['O(n log n)','O(n)','O(log n)','O(n²)'],ans:1,exp:'Build-Heap is O(n) because most nodes are leaves (height 0). Sum over all heights = O(n). NOT O(n log n)!'},
+  {q:'AVL tree: BF(z) = +2 and BF(left child of z) = −1. Which rotation?',opts:['LL: single right rotation','RR: single left rotation','LR: left-then-right','RL: right-then-left'],ans:2,exp:'BF(z)=+2 (left heavy) + BF(left child)=−1 (right heavy) = LR case. Fix: left rotation on left child, then right rotation on z.'},
+  {q:'Topological sort is possible if and only if:',opts:['Graph is undirected','Graph is a DAG (directed, no cycles)','Graph is complete','Graph is bipartite'],ans:1,exp:'Topological sort requires directed + acyclic (DAG). A cycle creates circular dependency. Kahn\'s algorithm detects a cycle if final count < V.'},
+  {q:'Dijkstra\'s algorithm gives INCORRECT results when:',opts:['Graph is disconnected','Graph has very large weights','Graph has negative weight edges','Graph has self-loops'],ans:2,exp:'Dijkstra\'s greedy property breaks with negative weights. A later path via a negative edge could be shorter than an already-finalized path. Use Bellman-Ford instead.'},
+  {q:'T(n) = 4T(n/2) + n². Solution using Master Theorem:',opts:['Θ(n²)','Θ(n² log n)','Θ(n³)','Θ(n log n)'],ans:1,exp:'a=4, b=2, p=log₂4=2. f(n)=n²=Θ(n^p) → Case 2. T(n)=Θ(n² log n).'},
+  {q:'In open addressing, deleting a key requires:',opts:['Marking the slot as empty','Marking the slot as DELETED (tombstone)','Rehashing the entire table','Shifting subsequent elements'],ans:1,exp:'Marking as empty breaks search chains. Tombstone allows probing to continue past the deleted slot without breaking chains for other keys.'},
+  {q:'Which two traversals UNIQUELY determine a binary tree?',opts:['Preorder + Postorder','Inorder + Preorder','Preorder alone','Level order alone'],ans:1,exp:'Inorder tells left/right subtree split. Preorder gives the root. Together they uniquely reconstruct. Preorder + Postorder is ambiguous when nodes have one child.'},
+  {q:'Minimum nodes in an AVL tree of height 3:',opts:['4','5','7','8'],ans:2,exp:'N(h) = N(h−1) + N(h−2) + 1. N(0)=1, N(1)=2, N(2)=4. N(3) = 4+2+1 = 7.'},
+];
+
+const mcqContainer = document.getElementById('mcq-container');
+mcqs.forEach((m, qi) => {
+  const div = document.createElement('div');
+  div.className = 'card';
+  div.innerHTML = `<div class="mcq-q">Q${qi+1}. ${m.q}</div>` +
+    m.opts.map((o,i) => `<button class="mcq-opt" onclick="answerMCQ(${qi},${i})">(${String.fromCharCode(65+i)}) ${o}</button>`).join('') +
+    `<div class="mcq-exp" id="exp-${qi}">${m.exp}</div>`;
+  mcqContainer.appendChild(div);
+});
+
+function answerMCQ(qi, chosen) {
+  const m = mcqs[qi];
+  const card = mcqContainer.children[qi];
+  card.querySelectorAll('.mcq-opt').forEach((b,i) => {
+    b.className = 'mcq-opt' + (i===m.ans?' correct':(i===chosen?' wrong':''));
+    b.disabled = true;
+  });
+  document.getElementById('exp-'+qi).classList.add('show');
+}
 </script>
 </body>
 </html>
